@@ -1,0 +1,20 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#171412"/>
+  <rect x="48" y="48" width="984" height="1254" rx="36" fill="#1E1A18" stroke="#3A312B"/>
+  <text x="102" y="144" fill="#D48960" font-family="Helvetica" font-size="28" letter-spacing="6">WHY THIS EXISTS</text>
+  <text x="102" y="336" fill="#FFF9F0" font-family="Georgia" font-size="104" font-weight="700">
+    <tspan x="102" dy="0">Most people do</tspan>
+    <tspan x="102" dy="102">not need a</tspan>
+    <tspan x="102" dy="102">framework to</tspan>
+    <tspan x="102" dy="102">launch</tspan>
+  </text>
+  <rect x="102" y="856" width="876" height="242" rx="28" fill="#2A2420"/>
+  <text x="150" y="950" fill="#F6E7D6" font-family="Helvetica" font-size="34">
+    <tspan x="150" dy="0">They need:</tspan>
+    <tspan x="150" dy="56">a clean starting point</tspan>
+    <tspan x="150" dy="56">fast edits in Codex</tspan>
+    <tspan x="150" dy="56">a publishing flow they can actually finish</tspan>
+  </text>
+  <circle cx="918" cy="240" r="38" fill="#D48960"/>
+  <circle cx="846" cy="240" r="16" fill="#F4EEE6"/>
+</svg>

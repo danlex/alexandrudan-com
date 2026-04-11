@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" fill="none">
+  <rect width="900" height="620" rx="30" fill="#F7F6F4"/>
+  <rect x="36" y="36" width="828" height="548" rx="24" fill="#FFFFFF" stroke="#E9E6E1" stroke-width="3"/>
+  <rect x="36" y="36" width="828" height="74" rx="24" fill="#111111"/>
+  <text x="74" y="82" fill="#D7D7D7" font-family="Manrope, Arial, sans-serif" font-size="20">Portfolio Site</text>
+
+  <text x="72" y="176" fill="#FF4A3D" font-family="Space Grotesk, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">PORTFOLIO</text>
+  <text x="72" y="236" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="54" font-weight="700">Design work</text>
+  <text x="72" y="286" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="54" font-weight="700">that converts.</text>
+  <text x="72" y="330" fill="#5A5A5A" font-family="Manrope, Arial, sans-serif" font-size="25">Case studies, metrics, and process.</text>
+
+  <rect x="72" y="370" width="274" height="64" rx="8" fill="#111111"/>
+  <text x="126" y="410" fill="#FFFFFF" font-family="Space Grotesk, Arial, sans-serif" font-size="28" font-weight="700">View Projects</text>
+
+  <rect x="468" y="154" width="164" height="164" rx="14" fill="#FFF2EF" stroke="#FFD3CC" stroke-width="3"/>
+  <rect x="656" y="154" width="164" height="164" rx="14" fill="#F7F6F4" stroke="#E2DED9" stroke-width="3"/>
+  <rect x="468" y="342" width="164" height="164" rx="14" fill="#111111"/>
+  <rect x="656" y="342" width="164" height="164" rx="14" fill="#FF4A3D"/>
+
+  <text x="506" y="244" fill="#A34E40" font-family="Manrope, Arial, sans-serif" font-size="20" font-weight="700">Brand</text>
+  <text x="694" y="244" fill="#4C4C4C" font-family="Manrope, Arial, sans-serif" font-size="20" font-weight="700">Web</text>
+  <text x="502" y="432" fill="#FFFFFF" font-family="Manrope, Arial, sans-serif" font-size="20" font-weight="700">Product</text>
+  <text x="692" y="432" fill="#FFFFFF" font-family="Manrope, Arial, sans-serif" font-size="20" font-weight="700">Content</text>
+</svg>

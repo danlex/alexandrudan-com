@@ -1,0 +1,23 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#F4EEE6"/>
+  <rect x="56" y="56" width="968" height="1238" rx="36" fill="#FFFDF8" stroke="#D7CBBE"/>
+  <text x="112" y="148" fill="#B85F38" font-family="Helvetica" font-size="28" letter-spacing="6">DEFAULT PATH</text>
+  <text x="112" y="284" fill="#171412" font-family="Georgia" font-size="96" font-weight="700">
+    <tspan x="112" dy="0">Start with</tspan>
+    <tspan x="112" dy="94">No framework</tspan>
+  </text>
+  <text x="112" y="476" fill="#5E564E" font-family="Helvetica" font-size="34">
+    <tspan x="112" dy="0">Best for most people because it removes friction.</tspan>
+  </text>
+  <rect x="112" y="560" width="856" height="170" rx="24" fill="#171412"/>
+  <text x="156" y="655" fill="#FFF9F0" font-family="Helvetica" font-size="36">No install step. No build step. Just edit, push, publish.</text>
+  <rect x="112" y="776" width="268" height="330" rx="24" fill="#E7B08F"/>
+  <rect x="406" y="776" width="268" height="330" rx="24" fill="#DDE7E1"/>
+  <rect x="700" y="776" width="268" height="330" rx="24" fill="#F3E7D8"/>
+  <text x="144" y="868" fill="#171412" font-family="Georgia" font-size="38" font-weight="700">Fastest launch</text>
+  <text x="144" y="928" fill="#171412" font-family="Helvetica" font-size="26">Works directly with GitHub Pages root deployment.</text>
+  <text x="438" y="868" fill="#171412" font-family="Georgia" font-size="38" font-weight="700">Easy to own</text>
+  <text x="438" y="928" fill="#171412" font-family="Helvetica" font-size="26">Every file is obvious: HTML, CSS, JavaScript.</text>
+  <text x="732" y="868" fill="#171412" font-family="Georgia" font-size="38" font-weight="700">Best for</text>
+  <text x="732" y="928" fill="#171412" font-family="Helvetica" font-size="26">Portfolios, personal sites, simple landing pages.</text>
+</svg>

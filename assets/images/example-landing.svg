@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" fill="none">
+  <rect width="900" height="620" rx="30" fill="#F7F6F4"/>
+  <rect x="36" y="36" width="828" height="548" rx="24" fill="#FFFFFF" stroke="#E9E6E1" stroke-width="3"/>
+  <rect x="36" y="36" width="828" height="74" rx="24" fill="#111111"/>
+  <text x="74" y="82" fill="#D7D7D7" font-family="Manrope, Arial, sans-serif" font-size="20">Landing Page</text>
+
+  <path d="M500 130H820V516H562L500 454V130Z" fill="#FF4A3D"/>
+  <rect x="72" y="156" width="382" height="330" rx="20" fill="#F7F6F4" stroke="#E2DED9" stroke-width="3"/>
+  <text x="96" y="204" fill="#FF4A3D" font-family="Space Grotesk, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2">LAUNCH</text>
+  <text x="96" y="258" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="48" font-weight="700">Go live in</text>
+  <text x="96" y="304" fill="#111111" font-family="Space Grotesk, Arial, sans-serif" font-size="48" font-weight="700">one evening.</text>
+  <text x="96" y="352" fill="#5A5A5A" font-family="Manrope, Arial, sans-serif" font-size="24">Template + Codex + Pages + Domain</text>
+  <rect x="96" y="390" width="228" height="62" rx="8" fill="#FF4A3D"/>
+  <text x="146" y="429" fill="#FFFFFF" font-family="Space Grotesk, Arial, sans-serif" font-size="27" font-weight="700">Launch Now</text>
+
+  <rect x="548" y="176" width="244" height="110" rx="14" fill="#FFFFFF"/>
+  <rect x="548" y="306" width="244" height="84" rx="14" fill="#111111"/>
+  <rect x="548" y="408" width="244" height="84" rx="14" fill="#FFFFFF"/>
+  <text x="574" y="222" fill="#111111" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700">Use This Template</text>
+  <text x="574" y="356" fill="#FFFFFF" font-family="Manrope, Arial, sans-serif" font-size="22">git push</text>
+  <text x="574" y="456" fill="#3F3F3F" font-family="Manrope, Arial, sans-serif" font-size="22" font-weight="700">HTTPS enabled</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <rect width="1600" height="1000" fill="#F5F5F7"/>
+  <text x="120" y="156" fill="#FF4931" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="3">STEP 8</text>
+  <text x="120" y="228" fill="#101010" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800">Add your custom domain</text>
+  <text x="120" y="282" fill="#5E6168" font-family="Inter, Arial, sans-serif" font-size="30">Set the domain in Pages first, then point DNS records from your provider.</text>
+
+  <rect x="120" y="342" width="860" height="520" rx="32" fill="#FFFFFF" stroke="#E1E4E8" stroke-width="4"/>
+  <text x="166" y="402" fill="#101010" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">Custom domain</text>
+  <rect x="166" y="440" width="768" height="84" rx="22" fill="#F6F7F9" stroke="#E4E7EC" stroke-width="3"/>
+  <text x="204" y="494" fill="#101010" font-family="Inter, Arial, sans-serif" font-size="31">www.yourdomain.com</text>
+  <rect x="166" y="552" width="220" height="68" rx="18" fill="#FF4931"/>
+  <text x="224" y="596" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Save</text>
+  <text x="166" y="680" fill="#5E6168" font-family="Inter, Arial, sans-serif" font-size="28">Check the existing domain file before you enable Pages:</text>
+  <text x="166" y="720" fill="#101010" font-family="JetBrains Mono, monospace" font-size="28">CNAME → yourdomain.com</text>
+
+  <rect x="1020" y="342" width="460" height="520" rx="32" fill="#101010"/>
+  <text x="1062" y="402" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800">DNS records</text>
+  <text x="1062" y="474" fill="#FF4931" font-family="JetBrains Mono, monospace" font-size="24">A</text>
+  <text x="1118" y="474" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="24">@ → 185.199.108.153</text>
+  <text x="1062" y="524" fill="#FF4931" font-family="JetBrains Mono, monospace" font-size="24">A</text>
+  <text x="1118" y="524" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="24">@ → 185.199.109.153</text>
+  <text x="1062" y="574" fill="#FF4931" font-family="JetBrains Mono, monospace" font-size="24">A</text>
+  <text x="1118" y="574" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="24">@ → 185.199.110.153</text>
+  <text x="1062" y="624" fill="#FF4931" font-family="JetBrains Mono, monospace" font-size="24">A</text>
+  <text x="1118" y="624" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-size="24">@ → 185.199.111.153</text>
+  <text x="1062" y="698" fill="#B8BDC6" font-family="Inter, Arial, sans-serif" font-size="25">Use `www` with a CNAME if that is the version you want to keep canonical.</text>
+</svg>
