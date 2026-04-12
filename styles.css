@@ -30,6 +30,10 @@ body {
   line-height: 1.6;
 }
 
+body.nav-open {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -424,18 +428,64 @@ h1 {
   font-weight: 600;
 }
 
+.featured-row {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.featured-row span {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin-right: 2px;
+}
+
+.featured-row a {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #e0dfdd;
+  background: rgba(255, 255, 255, 0.65);
+  color: #656565;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.featured-row a:hover,
+.featured-row a:focus-visible {
+  color: var(--red);
+  border-color: rgba(255, 73, 49, 0.34);
+  background: rgba(255, 73, 49, 0.08);
+}
+
 .hero-aside {
   display: grid;
   gap: 12px;
+  align-content: start;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.14));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(6px);
 }
 
 .aside-profile,
 .brand-pill,
+.aside-metrics,
 .availability-pill {
-  border: 1px solid rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.48);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   padding: 16px;
 }
 
@@ -443,6 +493,8 @@ h1 {
   display: grid;
   justify-items: center;
   text-align: center;
+  background: linear-gradient(170deg, rgba(255, 73, 49, 0.1), rgba(255, 255, 255, 0.95));
+  border-color: rgba(255, 73, 49, 0.24);
 }
 
 .aside-profile {
@@ -480,13 +532,44 @@ h1 {
 }
 
 .wordmark {
-  width: min(120px, 56%);
+  width: min(92px, 44%);
+  filter: none;
 }
 
 .brand-pill p {
   margin-top: 10px;
   color: #666;
   font-size: 0.88rem;
+}
+
+.aside-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px;
+}
+
+.aside-metric {
+  border: 1px solid rgba(255, 73, 49, 0.16);
+  border-radius: 10px;
+  background: linear-gradient(170deg, rgba(255, 73, 49, 0.07), rgba(255, 255, 255, 0.96));
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.aside-metric-value {
+  margin: 0;
+  color: var(--red);
+  font-family: var(--display);
+  font-size: 1.06rem;
+  line-height: 1;
+}
+
+.aside-metric-label {
+  margin-top: 5px;
+  color: #666;
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 
 .availability-pill {
@@ -690,12 +773,59 @@ h1 {
   background: linear-gradient(160deg, rgba(255, 73, 49, 0.05), #fff 64%);
 }
 
+.media-grid .card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.press-controls {
+  margin: -10px 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.press-filter {
+  appearance: none;
+  border: 1px solid #e3e3e3;
+  border-radius: 999px;
+  background: #fff;
+  color: #666;
+  font-family: var(--display);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 170ms ease;
+}
+
+.press-filter:hover,
+.press-filter:focus-visible {
+  color: var(--red);
+  border-color: rgba(255, 73, 49, 0.32);
+  background: rgba(255, 73, 49, 0.06);
+}
+
+.press-filter.is-active {
+  color: #fff;
+  border-color: var(--red);
+  background: var(--red);
+}
+
 .press-card {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+.press-card.is-hidden {
+  display: none;
+}
+
+.media-thumb,
 .press-thumb {
   width: 100%;
   height: 170px;
@@ -705,6 +835,7 @@ h1 {
   background: #f2f2f2;
 }
 
+.media-grid .card a,
 .press-card a {
   margin-top: auto;
 }
@@ -837,6 +968,10 @@ button:focus-visible {
     max-width: 760px;
   }
 
+  .hero-aside {
+    padding: 10px;
+  }
+
   .about-grid,
   .ethics-grid,
   .venture-grid,
@@ -906,6 +1041,10 @@ button:focus-visible {
     gap: 8px;
   }
 
+  .featured-row {
+    gap: 6px;
+  }
+
   .impact-grid,
   .card-grid,
   .press-grid,
@@ -924,6 +1063,10 @@ button:focus-visible {
 
   h1 {
     max-width: 16ch;
+  }
+
+  .aside-metrics {
+    grid-template-columns: 1fr;
   }
 }
 

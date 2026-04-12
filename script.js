@@ -3,15 +3,23 @@ const siteNav = document.querySelector(".site-nav");
 const navSectionLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
 
 if (menuToggle && siteNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = siteNav.classList.toggle("open");
+  const setMenuState = (isOpen) => {
+    siteNav.classList.toggle("open", isOpen);
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.textContent = isOpen ? "Close" : "Menu";
+    document.body.classList.toggle("nav-open", isOpen);
+  };
+
+  setMenuState(false);
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = !siteNav.classList.contains("open");
+    setMenuState(isOpen);
   });
 
   siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      siteNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
+      setMenuState(false);
     });
   });
 
@@ -26,16 +34,20 @@ if (menuToggle && siteNav) {
     }
 
     if (!siteNav.contains(target) && !menuToggle.contains(target)) {
-      siteNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
+      setMenuState(false);
     }
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && siteNav.classList.contains("open")) {
-      siteNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
+      setMenuState(false);
       menuToggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860 && siteNav.classList.contains("open")) {
+      setMenuState(false);
     }
   });
 }
@@ -43,6 +55,35 @@ if (menuToggle && siteNav) {
 const year = document.querySelector("#year");
 if (year) {
   year.textContent = String(new Date().getFullYear());
+}
+
+const pressFilters = Array.from(document.querySelectorAll(".press-filter"));
+const pressCards = Array.from(document.querySelectorAll(".press-card[data-press-type]"));
+
+if (pressFilters.length > 0 && pressCards.length > 0) {
+  const applyPressFilter = (filter) => {
+    pressFilters.forEach((button) => {
+      const isActive = button.dataset.filter === filter;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+
+    pressCards.forEach((card) => {
+      const cardType = card.dataset.pressType;
+      const shouldShow = filter === "all" || cardType === filter;
+      card.classList.toggle("is-hidden", !shouldShow);
+      card.hidden = !shouldShow;
+    });
+  };
+
+  pressFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter ?? "all";
+      applyPressFilter(filter);
+    });
+  });
+
+  applyPressFilter("all");
 }
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
