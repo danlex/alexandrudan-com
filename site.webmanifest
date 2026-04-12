@@ -1,12 +1,12 @@
 {
-  "name": "Alexandru Dan",
-  "short_name": "Alex Dan",
-  "description": "AI product strategy, agentic prototyping, and GTM systems.",
+  "name": "Alexandru DAN",
+  "short_name": "A. DAN",
+  "description": "Official website of Alexandru DAN, AI Ethics Ambassador and CEO at TVL Tech.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5f5f7",
-  "theme_color": "#101010",
+  "background_color": "#080c14",
+  "theme_color": "#0b1119",
   "icons": [
     {
       "src": "favicon-192.png",
