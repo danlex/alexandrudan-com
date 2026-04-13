@@ -27,4 +27,10 @@
       <image:title>Alexandru DAN speaking and workshop profile</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://alexandrudan.com/labs.html</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
