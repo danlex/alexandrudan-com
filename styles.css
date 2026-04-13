@@ -265,14 +265,8 @@ section[id] {
 
 body.inner-page .hero {
   min-height: auto;
-  grid-template-columns: 1fr;
-  gap: 24px;
   padding-top: 94px;
   padding-bottom: 74px;
-}
-
-body.inner-page .hero::before {
-  display: none;
 }
 
 body.inner-page .hero::after {
