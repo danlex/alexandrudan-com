@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://alexandrudan.com/sitemap.xml
+Host: alexandrudan.com
