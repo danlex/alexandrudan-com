@@ -156,7 +156,7 @@ if ("IntersectionObserver" in window && !prefersReducedMotion) {
         }
       });
     },
-    { threshold: 0.14 }
+    { threshold: 0, rootMargin: "0px 0px -80px 0px" }
   );
 
   revealElements.forEach((element) => revealObserver.observe(element));

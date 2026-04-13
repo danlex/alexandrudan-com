@@ -5,7 +5,7 @@
 >
   <url>
     <loc>https://alexandrudan.com/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,6 +15,16 @@
     <image:image>
       <image:loc>https://alexandrudan.com/alexandru-dan-portrait.jpg</image:loc>
       <image:title>Portrait of Alexandru DAN</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://alexandrudan.com/speaking-workshops.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://alexandrudan.com/alexandru-dan-portrait.jpg</image:loc>
+      <image:title>Alexandru DAN speaking and workshop profile</image:title>
     </image:image>
   </url>
 </urlset>

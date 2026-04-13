@@ -263,6 +263,23 @@ section[id] {
   pointer-events: none;
 }
 
+body.inner-page .hero {
+  min-height: auto;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding-top: 94px;
+  padding-bottom: 74px;
+}
+
+body.inner-page .hero::before {
+  display: none;
+}
+
+body.inner-page .hero::after {
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+}
+
 @keyframes drift {
   0% {
     background-position: 0 0;
@@ -621,6 +638,11 @@ h1 {
 #about,
 #ethics,
 #ventures,
+#workshops,
+#technical-proof,
+#workshop-outcomes,
+#current-themes,
+#media-kit,
 #particles-project,
 #press {
   background: var(--light-bg);
@@ -814,6 +836,20 @@ h1 {
   gap: 8px;
   color: var(--ink-soft);
   font-size: 0.92rem;
+}
+
+.workshop-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.workshop-note {
+  margin-top: 12px;
+  color: var(--ink-soft);
 }
 
 .project-actions {
@@ -1705,6 +1741,12 @@ button:focus-visible {
 }
 
 @media (max-width: 760px) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .hero,
   .section,
   .cta {
