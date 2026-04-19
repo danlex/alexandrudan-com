@@ -218,21 +218,27 @@ section[id] {
   scroll-margin-top: 96px;
 }
 
-.hero,
+.hero {
+  padding: 78px max(24px, calc((100vw - var(--max-width)) / 2)) 40px;
+}
+
 .section,
 .cta {
   padding: 88px max(24px, calc((100vw - var(--max-width)) / 2));
 }
 
 .hero {
-  min-height: calc(100vh - 78px);
+  height: 100vh;
+  min-height: 0;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-  gap: 56px;
+  gap: 40px;
   align-items: center;
   background: var(--light-bg);
   position: relative;
   overflow: hidden;
+  margin-top: -78px;
+  padding-top: 78px;
 }
 
 .hero::before {
@@ -243,10 +249,10 @@ section[id] {
   bottom: -140px;
   width: 54%;
   border-radius: 36px 0 0 36px;
-  background: var(--red);
+  background: transparent;
   clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
-  box-shadow: 0 36px 96px rgba(255, 73, 49, 0.34);
-  z-index: 0;
+  box-shadow: none;
+  z-index: 1;
 }
 
 .hero::after {
@@ -259,7 +265,7 @@ section[id] {
   opacity: 0.24;
   mix-blend-mode: screen;
   animation: drift 30s linear infinite;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -291,7 +297,38 @@ body.inner-page .hero::after {
 .hero-copy,
 .hero-aside {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  align-self: center;
+  max-height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.hero-copy::-webkit-scrollbar,
+.hero-aside::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-copy h1 {
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.08;
+}
+
+.hero-copy .lead {
+  font-size: clamp(14px, 1.1vw, 16px);
+}
+
+.hero-copy .chip-row,
+.hero-copy .trust-row,
+.hero-copy .member-row {
+  gap: 6px;
+}
+
+.hero-copy .chip-row li,
+.hero-copy .trust-row li,
+.hero-copy .member-row li {
+  font-size: 11px;
+  padding: 4px 10px;
 }
 
 .eyebrow {
@@ -480,27 +517,75 @@ h1 {
 .hero-aside {
   position: relative;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   align-content: start;
-  margin-top: 56px;
-  padding: 64px 12px 12px;
+  margin-top: 0;
+  padding: 12px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  background: linear-gradient(170deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.14));
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(6px);
+  border: none;
+  background: transparent;
+  box-shadow: none;
   overflow: hidden;
+  color: #fff;
 }
+
+.hero-aside .aside-name,
+.hero-aside .aside-role,
+.hero-aside .brand-pill p,
+.hero-aside .aside-metric-label,
+.hero-aside .availability-pill p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-aside .aside-metric-value,
+.hero-aside .availability-title {
+  color: #fff;
+}
+
+.hero-aside .portrait-card {
+  background: #111;
+}
+
+.hero-aside .portrait-card img {
+  opacity: 1;
+}
+
+.hero-aside .aside-profile,
+.hero-aside .brand-pill,
+.hero-aside .aside-metrics,
+.hero-aside .aside-metric,
+.hero-aside .availability-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.hero-aside .aside-metric-value {
+  color: var(--red-soft);
+}
+
+.hero-aside .aside-metric-label,
+.hero-aside .brand-pill p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-aside .availability-title {
+  color: var(--red-soft);
+}
+
 
 .aside-profile,
 .brand-pill,
 .aside-metrics,
 .availability-pill {
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  padding: 10px;
 }
 
 .particles-preview {
@@ -530,16 +615,16 @@ h1 {
 }
 
 .aside-profile {
-  margin-top: -50px;
+  margin-top: 0;
   justify-items: center;
   text-align: center;
 }
 
 .portrait-card {
   margin: 0 auto;
-  width: clamp(180px, 22vw, 260px);
+  width: clamp(140px, 14vw, 180px);
   aspect-ratio: 4 / 5;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   border: 2px solid rgba(255, 73, 49, 0.35);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
@@ -1835,4 +1920,91 @@ button:focus-visible {
     opacity: 1;
     transform: none;
   }
+
 }
+
+.hero {
+  background: #0b0b0b;
+  isolation: isolate;
+}
+
+.hero-bg-video,
+.section-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(0.35) saturate(1.15);
+}
+
+.has-video-bg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+.has-video-bg > *:not(.section-bg-video) {
+  position: relative;
+  z-index: 1;
+}
+
+.has-video-bg h2,
+.has-video-bg h3,
+.has-video-bg h4 {
+  color: #fff;
+}
+
+.has-video-bg p,
+.has-video-bg li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-bg-video {
+    display: none;
+  }
+}
+
+.hero > .hero-bg-video ~ .hero-copy .eyebrow,
+.hero > .hero-bg-video ~ .hero-copy .lead,
+.hero > .hero-bg-video ~ .hero-copy .trust-copy,
+.hero > .hero-bg-video ~ .hero-copy .chip-row li,
+.hero > .hero-bg-video ~ .hero-copy .trust-row li,
+.hero > .hero-bg-video ~ .hero-copy .member-row li,
+.hero > .hero-bg-video ~ .hero-copy .featured-row,
+.hero > .hero-bg-video ~ .hero-copy .featured-row a {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hero > .hero-bg-video ~ .hero-copy h1 {
+  color: #fff;
+}
+
+.hero > .hero-bg-video ~ .hero-copy .chip-row li,
+.hero > .hero-bg-video ~ .hero-copy .trust-row li,
+.hero > .hero-bg-video ~ .hero-copy .member-row li {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero > .hero-bg-video ~ .hero-copy .button-ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero > .hero-bg-video ~ .hero-copy .button-ghost:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video {
+    display: none;
+  }
+}
+
