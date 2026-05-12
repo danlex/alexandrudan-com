@@ -1923,7 +1923,7 @@ button:focus-visible {
 
 }
 
-.hero {
+.hero:has(> .hero-bg-video) {
   background: #0b0b0b;
   isolation: isolate;
 }
