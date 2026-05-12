@@ -26,7 +26,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:updated_time" content="2026-04-12T00:00:00+02:00" />
+    <meta property="og:updated_time" content="2026-05-12T00:00:00+02:00" />
     <meta property="og:url" content="https://alexandrudan.com/" />
     <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
     <meta property="og:image:width" content="1200" />
@@ -67,17 +67,77 @@
         "@type": "Person",
         "@id": "https://alexandrudan.com/#person",
         "name": "Alexandru DAN",
+        "givenName": "Alexandru",
+        "familyName": "DAN",
+        "alternateName": ["Alexandru Dan", "Alex Dan"],
         "url": "https://alexandrudan.com/",
         "image": "https://alexandrudan.com/alexandru-dan-portrait.jpg",
         "jobTitle": "Applied AI Systems Architect and CEO",
+        "nationality": {
+          "@type": "Country",
+          "name": "Romania"
+        },
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Luxembourg"
+        },
+        "workLocation": [
+          {
+            "@type": "Place",
+            "name": "Luxembourg"
+          },
+          {
+            "@type": "Place",
+            "name": "Bucharest, Romania"
+          }
+        ],
+        "hasOccupation": [
+          {
+            "@type": "Occupation",
+            "name": "Applied AI Systems Architect",
+            "occupationLocation": {
+              "@type": "Place",
+              "name": "Luxembourg"
+            },
+            "skills": [
+              "LLMs in production",
+              "Agentic AI workflows",
+              "Conversational AI testing",
+              "AI governance",
+              "EU AI Act readiness",
+              "Data spaces and AI"
+            ]
+          },
+          {
+            "@type": "Occupation",
+            "name": "Visiting Associate AI Professor",
+            "occupationLocation": {
+              "@type": "Place",
+              "name": "Bucharest, Romania"
+            }
+          }
+        ],
         "worksFor": {
           "@id": "https://www.tvl.tech/#organization"
         },
+        "affiliation": [
+          {
+            "@type": "EducationalOrganization",
+            "name": "Bucharest University of Economic Studies (ASE Bucharest)",
+            "url": "https://www.ase.ro/"
+          }
+        ],
         "description": "Applied AI systems architect, lecturer, and technology leader focused on production AI delivery, evaluation rigor, and governance by design.",
         "knowsAbout": [
           "Artificial Intelligence",
           "AI Ethics",
           "AI Strategy",
+          "AI Governance",
+          "EU AI Act",
+          "Large Language Models",
+          "Agentic AI",
+          "Conversational AI Testing",
+          "Data Spaces",
           "Digital Transformation",
           "Product Architecture",
           "Team Leadership"
@@ -99,6 +159,7 @@
         "email": "alex@tvl.tech",
         "sameAs": [
           "https://alexandrudan.com/",
+          "https://www.linkedin.com/in/alexandrudan/",
           "https://www.tvl.tech/about",
           "https://academy.tvl.tech/",
           "https://suno.alexandrudan.com/",
@@ -122,10 +183,14 @@
         "url": "https://www.tvl.tech/",
         "logo": "https://alexandrudan.com/tvl-tech-wordmark-orange.svg",
         "email": "contact@tvl.technology",
-        "founder": "Alexandru DAN",
+        "founder": {
+          "@id": "https://alexandrudan.com/#person"
+        },
         "description": "Software company building custom solutions in artificial intelligence, blockchain infrastructure, and scalable digital products.",
         "sameAs": [
-          "https://www.linkedin.com/company/tvl-technology/"
+          "https://www.linkedin.com/company/tvl-technology/",
+          "https://tvltech.lu/",
+          "https://www.tvl.technology/"
         ]
       }
     </script>
@@ -146,7 +211,7 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebPage",
+        "@type": "ProfilePage",
         "@id": "https://alexandrudan.com/#webpage",
         "url": "https://alexandrudan.com/",
         "name": "Alexandru DAN | Applied AI Systems Architect, Speaker, CEO at TVL Tech",
@@ -157,11 +222,14 @@
         "about": {
           "@id": "https://alexandrudan.com/#person"
         },
+        "mainEntity": {
+          "@id": "https://alexandrudan.com/#person"
+        },
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://alexandrudan.com/og-image-1200x630.png"
         },
-        "dateModified": "2026-04-13",
+        "dateModified": "2026-05-12",
         "inLanguage": "en"
       }
     </script>
@@ -288,7 +356,7 @@
             <figure class="portrait-card">
               <img
                 src="alexandru-dan-portrait.jpg"
-                alt="Portrait of Alexandru DAN"
+                alt="Alexandru DAN, Applied AI Systems Architect and CEO at TVL Tech"
                 width="935"
                 height="1400"
                 loading="eager"
