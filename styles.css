@@ -526,19 +526,21 @@ h1 {
   background: transparent;
   box-shadow: none;
   overflow: hidden;
+}
+
+.hero:has(> .hero-bg-video) .hero-aside {
   color: #fff;
 }
 
-.hero-aside .aside-name,
-.hero-aside .aside-role,
-.hero-aside .brand-pill p,
-.hero-aside .aside-metric-label,
-.hero-aside .availability-pill p {
+.hero:has(> .hero-bg-video) .hero-aside .aside-name,
+.hero:has(> .hero-bg-video) .hero-aside .aside-role,
+.hero:has(> .hero-bg-video) .hero-aside .brand-pill p,
+.hero:has(> .hero-bg-video) .hero-aside .aside-metric-label,
+.hero:has(> .hero-bg-video) .hero-aside .availability-pill p {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.hero-aside .aside-metric-value,
-.hero-aside .availability-title {
+.hero:has(> .hero-bg-video) .hero-aside .availability-title {
   color: #fff;
 }
 
@@ -550,11 +552,11 @@ h1 {
   opacity: 1;
 }
 
-.hero-aside .aside-profile,
-.hero-aside .brand-pill,
-.hero-aside .aside-metrics,
-.hero-aside .aside-metric,
-.hero-aside .availability-pill {
+.hero:has(> .hero-bg-video) .hero-aside .aside-profile,
+.hero:has(> .hero-bg-video) .hero-aside .brand-pill,
+.hero:has(> .hero-bg-video) .hero-aside .aside-metrics,
+.hero:has(> .hero-bg-video) .hero-aside .aside-metric,
+.hero:has(> .hero-bg-video) .hero-aside .availability-pill {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(6px);
@@ -565,8 +567,8 @@ h1 {
   color: var(--red-soft);
 }
 
-.hero-aside .aside-metric-label,
-.hero-aside .brand-pill p {
+.hero:has(> .hero-bg-video) .hero-aside .aside-metric-label,
+.hero:has(> .hero-bg-video) .hero-aside .brand-pill p {
   color: rgba(255, 255, 255, 0.85);
 }
 
