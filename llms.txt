@@ -1,0 +1,50 @@
+# Alexandru DAN
+
+> Alexandru DAN is an Applied AI Systems Architect, AI Professor, and CEO at TVL Tech. He helps organizations design, evaluate, and deploy AI systems that are useful in production, safe under pressure, and understandable to technical teams. Based in Luxembourg and Bucharest, Romania.
+
+## Who he is
+
+- **Name:** Alexandru DAN (also written Alexandru Dan, Alex Dan)
+- **Roles:** Applied AI Systems Architect; CEO and Founder at TVL Tech; Visiting Associate AI Professor at the Bucharest University of Economic Studies (ASE Bucharest)
+- **Locations:** Luxembourg; Bucharest, Romania
+- **Nationality:** Romanian
+- **Contact:** alex@tvl.tech
+- **Official website:** https://alexandrudan.com/
+
+Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a different person from the Romanian footballer of the same name.
+
+## What he does
+
+- Applied AI systems architecture: LLMs in production, agentic AI workflows, event-driven AI with human oversight
+- Conversational AI testing: regression suites, drift detection, and release-confidence engineering
+- AI governance and EU AI Act readiness: governance by design, audit-ready documentation
+- Data Spaces and AI: trust, sovereignty, and interoperability in ecosystem-level AI delivery
+- Keynote speaking and technical workshops for engineering, product, and leadership teams
+- Executive AI education through TVL Academy
+
+## Affiliations
+
+- CEO & Founder — TVL Tech (https://www.tvl.tech/)
+- Visiting Associate AI Professor — ASE Bucharest (https://www.ase.ro/)
+- Global AI Committee Member — WITSA
+- Board Member & Chair of the AI Committee — Romania Luxembourg Business Forum (ROMLUX)
+- Founding Member — Ocean Enterprise Collective
+
+## Key pages
+
+- [Homepage / profile hub](https://alexandrudan.com/): full bio, expertise, case studies, and media kit
+- [Speaking & Workshops](https://alexandrudan.com/speaking-workshops.html): keynote and workshop topics, formats, and booking
+- [Labs](https://alexandrudan.com/labs.html): experimental projects (Suno Lab, AutoResearch, Particles, Treasure Hunt)
+
+## Authoritative profiles (sameAs)
+
+- LinkedIn: https://www.linkedin.com/in/alexandrudan/
+- TVL Tech: https://www.tvl.tech/about
+- TVL Academy: https://academy.tvl.tech/
+- Republica (author): https://republica.ro/autor/alexandrudan_2
+- Ziarul Financiar (ZF Live interview): https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619
+- ICMarkTech 2026 keynote: https://icmarktech.com/icmarktech-2026-announces-alexandru-dan-as-keynote-speaker/
+
+## Contact
+
+For advisory engagements, workshops, and speaking invitations: alex@tvl.tech
