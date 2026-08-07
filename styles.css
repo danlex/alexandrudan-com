@@ -1746,7 +1746,9 @@ button:focus-visible {
 @media (max-width: 980px) {
   .hero {
     grid-template-columns: 1fr;
+    height: auto;
     min-height: auto;
+    align-items: start;
     padding-top: 82px;
     padding-bottom: 72px;
   }
