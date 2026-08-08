@@ -165,24 +165,29 @@ if ("IntersectionObserver" in window && !prefersReducedMotion) {
 }
 
 
-document.querySelectorAll(".hero-bg-video, .section-bg-video").forEach((video) => {
-  video.playbackRate = 0.5;
-  video.muted = true;
-  const tryPlay = () => {
-    const p = video.play();
-    if (p && typeof p.catch === "function") {
-      p.catch(() => {
-        document.addEventListener(
-          "pointerdown",
-          () => video.play().catch(() => {}),
-          { once: true }
-        );
-      });
-    }
-  };
-  if (video.readyState >= 2) {
+// Only load and play background videos on larger screens. On phones/tablets the
+// hero video (several MB) is skipped entirely — the poster image shows instead —
+// which saves mobile data/battery and improves LCP. preload="none" in the markup
+// means nothing is fetched until play() is called here.
+const canPlayBgVideo =
+  window.matchMedia("(min-width: 981px)").matches && !prefersReducedMotion;
+
+if (canPlayBgVideo) {
+  document.querySelectorAll(".hero-bg-video, .section-bg-video").forEach((video) => {
+    video.muted = true;
+    const tryPlay = () => {
+      video.playbackRate = 0.5;
+      const p = video.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => {
+          document.addEventListener(
+            "pointerdown",
+            () => video.play().catch(() => {}),
+            { once: true }
+          );
+        });
+      }
+    };
     tryPlay();
-  } else {
-    video.addEventListener("loadeddata", tryPlay, { once: true });
-  }
-});
+  });
+}
