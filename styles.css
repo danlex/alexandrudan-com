@@ -1779,19 +1779,19 @@ button:focus-visible {
     margin-top: 0;
   }
 
-  .hero-copy {
+  .brand-pill {
     order: 2;
   }
 
-  .brand-pill {
+  .aside-metrics {
     order: 3;
   }
 
-  .aside-metrics {
+  .availability-pill {
     order: 4;
   }
 
-  .availability-pill {
+  .hero-copy {
     order: 5;
   }
 
@@ -1873,10 +1873,14 @@ button:focus-visible {
     transition: none;
   }
 
-  .hero,
   .section,
   .cta {
     padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .hero {
+    padding-top: 20px;
     padding-bottom: 64px;
   }
 
