@@ -1906,6 +1906,27 @@ button:focus-visible {
   .aside-metrics {
     grid-template-columns: 1fr;
   }
+
+  .hero-aside {
+    padding: 0;
+  }
+
+  .portrait-card {
+    width: min(280px, 78%);
+    aspect-ratio: 3 / 4;
+  }
+
+  .portrait-card img {
+    object-position: center 15%;
+  }
+
+  .aside-name {
+    font-size: 1.15rem;
+  }
+
+  .aside-role {
+    font-size: 0.92rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
