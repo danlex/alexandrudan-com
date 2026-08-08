@@ -1749,6 +1749,7 @@ button:focus-visible {
     height: auto;
     min-height: auto;
     align-items: start;
+    gap: 24px;
     padding-top: 82px;
     padding-bottom: 72px;
   }
@@ -1767,13 +1768,31 @@ button:focus-visible {
     max-width: 760px;
   }
 
+  /* Photo-first on mobile: flatten the aside so the portrait leads the hero,
+     then the pitch + CTA, then the brand pill and metrics below. */
   .hero-aside {
-    margin-top: 0;
-    padding: 10px;
+    display: contents;
   }
 
   .aside-profile {
+    order: 1;
     margin-top: 0;
+  }
+
+  .hero-copy {
+    order: 2;
+  }
+
+  .brand-pill {
+    order: 3;
+  }
+
+  .aside-metrics {
+    order: 4;
+  }
+
+  .availability-pill {
+    order: 5;
   }
 
   .about-grid,
@@ -1792,8 +1811,32 @@ button:focus-visible {
 }
 
 @media (max-width: 860px) {
+  .site-header {
+    height: 62px;
+  }
+
+  main {
+    margin-top: 62px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-mark img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .brand-copy strong {
+    font-size: 0.86rem;
+  }
+
   .menu-toggle {
     display: inline-flex;
+    padding: 7px 13px;
+    font-size: 0.78rem;
   }
 
   .brand-copy small {
@@ -1802,7 +1845,7 @@ button:focus-visible {
 
   .site-nav {
     position: fixed;
-    top: 78px;
+    top: 62px;
     left: 0;
     right: 0;
     display: none;
