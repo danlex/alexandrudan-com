@@ -1879,8 +1879,14 @@ button:focus-visible {
     padding-bottom: 64px;
   }
 
-  .hero {
+  /* Visible white gap between the fixed menu and the dark hero (padding on main
+     shows the white page background; margin would collapse and disappear). */
+  main {
     padding-top: 20px;
+  }
+
+  .hero {
+    padding-top: 12px;
     padding-bottom: 64px;
   }
 
