@@ -1,6 +1,6 @@
 :root {
-  --red: #ff4931;
-  --red-dark: #d63a2a;
+  --red: #c62828;
+  --red-dark: #a51d1d;
   --red-soft: #ff9b90;
   --ink: #121212;
   --ink-soft: #4f4f4f;
@@ -12,6 +12,41 @@
   --max-width: 1140px;
   --display: "Space Grotesk", "Segoe UI", sans-serif;
   --body: "Manrope", "Segoe UI", sans-serif;
+}
+
+/* Self-hosted fonts (was Google Fonts) — removes the render-blocking
+   third-party request. Variable woff2, latin + latin-ext (English + Romanian). */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: optional;
+  src: url("fonts/manrope-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: optional;
+  src: url("fonts/manrope-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
+  src: url("fonts/spacegrotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
+  src: url("fonts/spacegrotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 * {
@@ -336,7 +371,7 @@ body.inner-page .hero::after {
   align-items: center;
   gap: 10px;
   margin: 0 0 18px;
-  color: rgba(255, 73, 49, 0.88);
+  color: var(--red);
   font-family: var(--display);
   font-size: 0.7rem;
   letter-spacing: 0.14em;
@@ -1676,7 +1711,7 @@ h1 {
 .site-footer {
   border-top: 1px solid var(--line);
   background: #fff;
-  color: #8b8b8b;
+  color: #6b6b6b;
   font-size: 0.85rem;
   padding: 22px max(24px, calc((100vw - var(--max-width)) / 2));
 }

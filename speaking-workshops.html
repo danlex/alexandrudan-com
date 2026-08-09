@@ -39,12 +39,8 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="site.webmanifest" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" as="font" type="font/woff2" href="fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="fonts/manrope-latin.woff2" crossorigin />
 
     <script type="application/ld+json">
       {
@@ -227,14 +223,17 @@
         <aside class="hero-aside reveal">
           <div class="aside-profile">
             <figure class="portrait-card">
-              <img
-                src="alexandru-dan-portrait.jpg"
-                alt="Alexandru DAN, Applied AI Systems Architect and CEO at TVL Tech"
-                width="935"
-                height="1400"
-                loading="eager"
-                fetchpriority="high"
-              />
+              <picture>
+                <source srcset="alexandru-dan-portrait.webp" type="image/webp" />
+                <img
+                  src="alexandru-dan-portrait.jpg"
+                  alt="Alexandru DAN, Applied AI Systems Architect and CEO at TVL Tech"
+                  width="935"
+                  height="1400"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </picture>
             </figure>
             <p class="aside-name">Alexandru DAN</p>
             <p class="aside-role">Applied AI Systems Architect</p>
