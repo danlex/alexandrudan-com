@@ -1750,6 +1750,9 @@ button:focus-visible {
     min-height: auto;
     align-items: start;
     gap: 24px;
+    /* Cancel the desktop full-bleed negative margin so the hero sits below the
+       fixed header on mobile (the -78px was tucking it under the menu). */
+    margin-top: 0;
     padding-top: 82px;
     padding-bottom: 72px;
   }
@@ -1815,8 +1818,12 @@ button:focus-visible {
     height: 62px;
   }
 
+  /* Offset the fixed 62px header with PADDING (not margin): main's margin-top
+     collapses through body, so a top margin never actually clears the fixed
+     header. 62px header + 20px = a real 20px white gap above the hero. */
   main {
-    margin-top: 62px;
+    margin-top: 0;
+    padding-top: 82px;
   }
 
   .brand-mark {
@@ -1877,12 +1884,6 @@ button:focus-visible {
   .cta {
     padding-top: 64px;
     padding-bottom: 64px;
-  }
-
-  /* Visible white gap between the fixed menu and the dark hero (padding on main
-     shows the white page background; margin would collapse and disappear). */
-  main {
-    padding-top: 20px;
   }
 
   .hero {
