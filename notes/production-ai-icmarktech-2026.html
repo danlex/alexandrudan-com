@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Production AI, not demo AI — my ICMarkTech 2026 keynote thesis | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field note by Alexandru DAN ahead of the ICMarkTech 2026 keynote: evaluation first, architecture second, governance always on — moving teams from demo AI to production AI."
+    />
+    <meta
+      name="keywords"
+      content="production AI, LLMs in production, agentic AI, EU AI Act, ICMarkTech 2026, AI keynote, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="Production AI, not demo AI — my ICMarkTech 2026 keynote thesis" />
+    <meta property="og:description" content="Evaluation first, architecture second, governance always on: the framing behind the ICMarkTech 2026 keynote." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/production-ai-icmarktech-2026.html" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Production AI, not demo AI — my ICMarkTech 2026 keynote thesis" />
+    <meta name="twitter:description" content="The framing behind the ICMarkTech 2026 keynote, by Alexandru DAN." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/production-ai-icmarktech-2026.html" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/production-ai-icmarktech-2026.html" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/production-ai-icmarktech-2026.html" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://alexandrudan.com/notes/production-ai-icmarktech-2026.html#article",
+        "headline": "Production AI, not demo AI — the thesis behind my ICMarkTech 2026 keynote",
+        "description": "Evaluation first, architecture second, governance always on: the framing behind the ICMarkTech 2026 keynote on practical AI implementation.",
+        "url": "https://alexandrudan.com/notes/production-ai-icmarktech-2026.html",
+        "mainEntityOfPage": "https://alexandrudan.com/notes/production-ai-icmarktech-2026.html",
+        "datePublished": "2026-08-13",
+        "dateModified": "2026-08-13",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "Production AI",
+        "keywords": "production AI, LLMs in production, agentic AI, EU AI Act, ICMarkTech 2026",
+        "isPartOf": { "@id": "https://alexandrudan.com/notes/#blog" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" },
+          { "@type": "ListItem", "position": 3, "name": "Production AI — ICMarkTech 2026", "item": "https://alexandrudan.com/notes/production-ai-icmarktech-2026.html" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../speaking-workshops.html">Speaking</a>
+          <a href="../labs.html">Labs</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field Note · Production AI · August 2026</p>
+          <h1>Production AI, not demo AI.</h1>
+          <p class="lead">
+            The framing behind my ICMarkTech 2026 keynote: most organizations do not have an AI ideas problem — they have an AI delivery problem. The gap is between an impressive demo and a system that survives production.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The note</p>
+            <p>
+              In December 2026 I am giving a keynote at ICMarkTech 2026 in Bucharest on practical AI implementation. The thesis is simple: build less demo AI, ship more production AI. Evaluation first, architecture second, governance always on.
+            </p>
+            <p>
+              In practice that means designing for the parts a demo hides — reliability under real user variability, failure modes when prompts and models change, human oversight in critical paths, and audit-ready documentation aligned with the EU AI Act. It is the same discipline I teach in workshops: a reusable prompt framework, a reference architecture for orchestration and retrieval, a pilot-scoring model to prioritize what is worth building, and governance controls that fit delivery reality rather than slowing it down.
+            </p>
+            <p>
+              The organizations that win with AI are not the ones with the flashiest prototypes. They are the ones that treat evaluation, architecture, and governance as first-class from day one.
+            </p>
+            <div class="project-actions">
+              <a href="https://icmarktech.com/icmarktech-2026-announces-alexandru-dan-as-keynote-speaker/" target="_blank" rel="noreferrer">ICMarkTech 2026 keynote announcement</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <h3>Related</h3>
+            <ul class="workshop-list">
+              <li><a href="../speaking-workshops.html">Keynotes &amp; technical workshops</a></li>
+              <li><a href="../index.html#workshops">Signature topics &amp; formats</a></li>
+              <li><a href="index.html">All field notes</a></li>
+            </ul>
+            <p class="workshop-note">To invite this keynote for your event, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="index.html">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

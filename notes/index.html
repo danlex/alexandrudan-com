@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field notes by Alexandru DAN on production AI: conversational AI testing, LLMs in production, agentic workflows, data spaces, and governance by design."
+    />
+    <meta
+      name="keywords"
+      content="Alexandru Dan notes, conversational AI testing, LLMs in production, agentic AI, data spaces, EU AI Act, AI governance"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="Notes | Alexandru DAN" />
+    <meta
+      property="og:description"
+      content="Field notes on production AI: testing rigor, LLMs in production, agentic workflows, and data spaces."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notes | Alexandru DAN" />
+    <meta
+      name="twitter:description"
+      content="Field notes on production AI by Alexandru DAN."
+    />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": "https://alexandrudan.com/notes/#blog",
+        "url": "https://alexandrudan.com/notes/",
+        "name": "Notes — Alexandru DAN",
+        "description": "Field notes on production AI: conversational AI testing, LLMs in production, agentic workflows, data spaces, and governance by design.",
+        "isPartOf": { "@id": "https://alexandrudan.com/#website" },
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "breadcrumb": { "@id": "https://alexandrudan.com/notes/#breadcrumb" },
+        "inLanguage": "en",
+        "blogPost": [
+          { "@type": "BlogPosting", "headline": "Testing rigor is becoming the real differentiator in conversational AI", "url": "https://alexandrudan.com/notes/conversational-ai-testing.html", "datePublished": "2026-08-13", "author": { "@id": "https://alexandrudan.com/#person" } },
+          { "@type": "BlogPosting", "headline": "Production AI, not demo AI — the thesis behind my ICMarkTech 2026 keynote", "url": "https://alexandrudan.com/notes/production-ai-icmarktech-2026.html", "datePublished": "2026-08-13", "author": { "@id": "https://alexandrudan.com/#person" } },
+          { "@type": "BlogPosting", "headline": "Data spaces and AI: trust and sovereignty by design", "url": "https://alexandrudan.com/notes/data-spaces-and-ai.html", "datePublished": "2026-08-13", "author": { "@id": "https://alexandrudan.com/#person" } }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://alexandrudan.com/notes/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../speaking-workshops.html">Speaking</a>
+          <a href="../labs.html">Labs</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Notes</p>
+          <h1>Field notes on building AI in production.</h1>
+          <p class="lead">
+            Short, practical notes from talks, workshops, and delivery work — on conversational AI testing, LLMs in production, agentic workflows, data spaces, and governance by design.
+          </p>
+          <ul class="chip-row" aria-label="Note topics">
+            <li>Conversational AI Testing</li>
+            <li>LLMs in Production</li>
+            <li>Agentic AI</li>
+            <li>Data Spaces</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section reveal" id="all-notes">
+        <div class="section-head">
+          <p class="eyebrow">All Notes</p>
+          <h2>Latest field notes.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <p class="project-kicker">Conversational AI · Aug 2026</p>
+            <h3><a href="conversational-ai-testing.html">Testing rigor is becoming the real differentiator in conversational AI</a></h3>
+            <p>Why repeatable scenario suites, baseline comparisons, and drift checks separate systems that ship from systems that break after a model or prompt update.</p>
+            <a href="conversational-ai-testing.html">Read the note</a>
+          </article>
+          <article class="card">
+            <p class="project-kicker">Production AI · Aug 2026</p>
+            <h3><a href="production-ai-icmarktech-2026.html">Production AI, not demo AI — the thesis behind my ICMarkTech 2026 keynote</a></h3>
+            <p>Evaluation first, architecture second, governance always on: the framing behind the ICMarkTech 2026 keynote on practical AI implementation.</p>
+            <a href="production-ai-icmarktech-2026.html">Read the note</a>
+          </article>
+          <article class="card">
+            <p class="project-kicker">Data Spaces · Aug 2026</p>
+            <h3><a href="data-spaces-and-ai.html">Data spaces and AI: trust and sovereignty by design</a></h3>
+            <p>How data-space-aligned architecture and governance controls make multi-organization AI collaboration compliant and stable — notes from the Ocean Enterprise work.</p>
+            <a href="data-spaces-and-ai.html">Read the note</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="../speaking-workshops.html">Speaking</a> · <a href="../labs.html">Labs</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <!-- TVLChat assistant (alexandrudan tenant) -->
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

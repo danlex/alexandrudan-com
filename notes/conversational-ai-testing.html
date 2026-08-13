@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing rigor is the real differentiator in conversational AI | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field note by Alexandru DAN: why repeatable scenario suites, baseline comparisons, and drift checks separate conversational AI systems that ship from ones that break after a model or prompt update."
+    />
+    <meta
+      name="keywords"
+      content="conversational AI testing, regression suites, drift detection, LLM evaluation, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="Testing rigor is the real differentiator in conversational AI" />
+    <meta property="og:description" content="Why regression suites and drift checks separate conversational AI systems that ship from ones that break." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/conversational-ai-testing.html" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Testing rigor is the real differentiator in conversational AI" />
+    <meta name="twitter:description" content="Regression suites and drift checks for conversational AI, by Alexandru DAN." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/conversational-ai-testing.html" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/conversational-ai-testing.html" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/conversational-ai-testing.html" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://alexandrudan.com/notes/conversational-ai-testing.html#article",
+        "headline": "Testing rigor is becoming the real differentiator in conversational AI",
+        "description": "Why repeatable scenario suites, baseline comparisons, and drift checks separate conversational AI systems that ship from ones that break after a model or prompt update.",
+        "url": "https://alexandrudan.com/notes/conversational-ai-testing.html",
+        "mainEntityOfPage": "https://alexandrudan.com/notes/conversational-ai-testing.html",
+        "datePublished": "2026-08-13",
+        "dateModified": "2026-08-13",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "Conversational AI Testing",
+        "keywords": "conversational AI testing, regression suites, drift detection, LLM evaluation",
+        "isPartOf": { "@id": "https://alexandrudan.com/notes/#blog" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" },
+          { "@type": "ListItem", "position": 3, "name": "Conversational AI testing", "item": "https://alexandrudan.com/notes/conversational-ai-testing.html" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../speaking-workshops.html">Speaking</a>
+          <a href="../labs.html">Labs</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field Note · Conversational AI · August 2026</p>
+          <h1>Testing rigor is becoming the real differentiator in conversational AI.</h1>
+          <p class="lead">
+            Chatbot behavior changes after every model and prompt update. The teams that ship reliably are the ones that treat conversational quality as an engineering discipline, not a demo.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The note</p>
+            <p>
+              Across conversational AI projects, the recurring failure mode is the same: behavior drifts silently. A model upgrade, a reworded prompt, or a new intent quietly regresses answers that used to work — and nobody notices until it reaches production.
+            </p>
+            <p>
+              The fix is not more prompt tinkering. It is testing discipline borrowed from software engineering: repeatable scenario suites that exercise real conversations, baseline comparisons that catch behavioral drift, and evaluation scorecards with human review loops on the edge cases. This is the same approach behind the conversational quality engineering work described in my <a href="../index.html#technical-proof">technical proof of work</a> — regression suites and drift checks that raise release confidence and cut production regressions.
+            </p>
+            <p>
+              These were also the themes I brought to the European Chatbot &amp; Conversational AI Summit 2026: as the field matures, rigorous testing is shifting from a nice-to-have to the core differentiator between conversational systems that scale and ones that stall.
+            </p>
+            <div class="project-actions">
+              <a href="https://www.linkedin.com/posts/alexandrudan_day-1-at-the-european-chatbot-conversational-activity-7440042738630270976-JKHG" target="_blank" rel="noreferrer">Read my summit takeaways on LinkedIn</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <h3>Related</h3>
+            <ul class="workshop-list">
+              <li><a href="../speaking-workshops.html">Conversational AI testing workshop &amp; keynote</a></li>
+              <li><a href="../index.html#technical-proof">Case study: conversational quality engineering</a></li>
+              <li><a href="index.html">All field notes</a></li>
+            </ul>
+            <p class="workshop-note">For a testing-rigor workshop with your team, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="index.html">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>
