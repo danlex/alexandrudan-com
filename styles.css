@@ -8,8 +8,8 @@
   --line-strong: #d8d8d8;
   --light-bg: #f7f6f4;
   --white: #ffffff;
-  --shadow-card: 0 18px 42px rgba(17, 24, 39, 0.08);
-  --max-width: 1140px;
+  --shadow-card: 0 10px 28px rgba(17, 24, 39, 0.05);
+  --max-width: 1240px;
   --display: "Space Grotesk", "Segoe UI", sans-serif;
   --body: "Manrope", "Segoe UI", sans-serif;
 }
@@ -345,8 +345,9 @@ body.inner-page .hero::after {
 }
 
 .hero-copy h1 {
-  font-size: clamp(28px, 3.6vw, 44px);
-  line-height: 1.08;
+  font-size: clamp(30px, 4.2vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .hero-copy .lead {
@@ -769,10 +770,102 @@ h1 {
   margin-bottom: 36px;
 }
 
+/* Featured-in press strip (under the hero) */
+.press-strip-band {
+  border-top: 1px solid #ececec;
+  background: #fff;
+  padding: 22px 24px;
+}
+
+.press-strip {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 26px;
+}
+
+.press-strip-label {
+  margin: 0;
+  color: #9a9a9a;
+  font-family: var(--display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.press-strip ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 26px;
+}
+
+.press-strip li {
+  color: #6f6f6f;
+  font-family: var(--display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.press-strip a {
+  color: var(--red);
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.press-strip a:hover,
+.press-strip a:focus-visible {
+  text-decoration: underline;
+}
+
+/* Dark "stage" band — used on the Signature Talks section */
+.section-dark {
+  background: #0b1119;
+  border-top-color: #0b1119;
+}
+
+.section-dark .section-head h2 {
+  color: #fff;
+}
+
+.section-dark .card,
+.section-dark .media-grid .card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+
+.section-dark .card h3 {
+  color: #fff;
+}
+
+.section-dark .card p {
+  color: #b9c2cf;
+}
+
+.section-dark .card a {
+  color: var(--red-soft);
+}
+
+.section-dark .media-thumb {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
 .section-head h2 {
   margin-top: 10px;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  line-height: 1.18;
+  font-size: clamp(1.9rem, 3.2vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
 }
 
 .about-grid,
