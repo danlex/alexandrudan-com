@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Evaluation &amp; Testing — Golden Sets, Judge Models, Regression | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="How to evaluate and test LLM applications: golden test sets, semantic and factuality evaluation, hallucination detection, judge models, prompt regression testing, cost and latency budgets, and production monitoring. By Alexandru DAN."
+    />
+    <meta
+      name="keywords"
+      content="LLM evaluation, LLM testing, LLM regression testing, conversational AI testing, golden datasets, judge models, hallucination detection, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="LLM Evaluation &amp; Testing — Golden Sets, Judge Models, Regression" />
+    <meta property="og:description" content="Golden test sets, semantic evaluation, hallucination detection, judge models, regression testing, and production monitoring for LLM applications." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/llm-evaluation-testing/" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LLM Evaluation &amp; Testing — Golden Sets, Judge Models, Regression" />
+    <meta name="twitter:description" content="The testing discipline that keeps LLM applications stable across model and prompt changes." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/llm-evaluation-testing/" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/llm-evaluation-testing/" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/llm-evaluation-testing/" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://alexandrudan.com/llm-evaluation-testing/#article",
+        "headline": "LLM Evaluation and Testing: Golden Sets, Judge Models, and Regression Discipline",
+        "description": "How to evaluate and test LLM applications: golden test sets, semantic and factuality evaluation, hallucination detection, judge models, prompt regression testing, cost and latency budgets, and production monitoring.",
+        "url": "https://alexandrudan.com/llm-evaluation-testing/",
+        "mainEntityOfPage": "https://alexandrudan.com/llm-evaluation-testing/",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "LLM Evaluation",
+        "keywords": "LLM evaluation, LLM testing, golden datasets, judge models, hallucination detection, regression testing, production monitoring",
+        "isPartOf": { "@id": "https://alexandrudan.com/#website" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://alexandrudan.com/#person",
+        "name": "Alexandru DAN",
+        "alternateName": ["Alexandru Dan", "Alex Dan"],
+        "url": "https://alexandrudan.com/",
+        "image": "https://alexandrudan.com/alexandru-dan-portrait.jpg",
+        "jobTitle": "Applied AI Systems Architect and CEO",
+        "worksFor": { "@id": "https://www.tvl.tech/#organization" },
+        "sameAs": [
+          "https://alexandrudan.com/",
+          "https://www.wikidata.org/wiki/Q141017681",
+          "https://www.linkedin.com/in/alexandrudan/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://www.tvl.tech/#organization",
+        "name": "TVL Tech",
+        "url": "https://www.tvl.tech/",
+        "logo": "https://alexandrudan.com/tvl-tech-wordmark-orange.svg",
+        "founder": { "@id": "https://alexandrudan.com/#person" },
+        "sameAs": [
+          "https://www.tvl.tech/",
+          "https://www.linkedin.com/company/tvl-technology/",
+          "https://tvltech.lu/",
+          "https://www.tvl.technology/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://alexandrudan.com/llm-evaluation-testing/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you test LLM applications?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "With the same discipline as software testing, adapted for non-determinism: a golden test set of real inputs with expected behaviors, semantic evaluation instead of exact-match assertions, judge models plus deterministic checks for scoring, baseline comparisons on every model or prompt change, and production monitoring on a sample of live traffic."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is LLM regression testing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Re-running a fixed evaluation suite after every change — model upgrade, prompt rewording, retrieval or tool change — and comparing scores against the recorded baseline. It catches silent behavioral drift: answers that used to work quietly breaking after an update nobody thought was risky."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a golden test set?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A curated, versioned collection of real representative inputs with expected behaviors — happy path, edge cases, and known failure modes. It is the fixed yardstick that makes quality comparable across releases, and it grows as production failures are converted into new test cases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you evaluate hallucinations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Check every factual claim in the output against the provided context and tool results — claims without support count as hallucinations. In practice: deterministic checks for verifiable fields, a calibrated judge model for grounding against source material, and human review on flagged samples."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who can help with LLM evaluation and testing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Alexandru DAN is an Applied AI Systems Architect and CEO at TVL Tech whose production work includes conversational AI regression suites with baseline comparisons and drift checks. He teaches LLMs and AI Explainability at ASE Bucharest and consults across Romania, Luxembourg, and Europe."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "LLM Evaluation & Testing", "item": "https://alexandrudan.com/llm-evaluation-testing/" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>LLM Evaluation</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="../ai-agent-evaluation/">Agent Evaluation</a>
+          <a href="../enterprise-ai-agents/">AI Agents</a>
+          <a href="../ai-consultant-romania/">AI Consulting</a>
+          <a href="../notes/">Notes</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Production LLM Systems · Testing</p>
+          <h1>LLM evaluation and testing: <span class="gradient-text">stability across every model and prompt change</span>.</h1>
+          <p class="lead">
+            LLM applications fail differently from normal software: behavior drifts silently after a model upgrade, a reworded prompt, or a retrieval change. Testing them means golden test sets instead of unit fixtures, semantic evaluation instead of exact-match assertions, judge models plus deterministic checks instead of pass/fail alone — and re-running all of it on every change.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-solid" href="mailto:alex@tvl.tech?subject=LLM%20Evaluation">Discuss your test setup</a>
+            <a class="button button-ghost" href="../ai-agent-evaluation/">AI agent evaluation</a>
+          </div>
+          <ul class="chip-row" aria-label="Core concepts">
+            <li>Golden Test Sets</li>
+            <li>Judge Models</li>
+            <li>Hallucination Detection</li>
+            <li>Drift Checks</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section reveal" id="building-blocks">
+        <div class="section-head">
+          <p class="eyebrow">Building Blocks</p>
+          <h2>What a real LLM test setup contains.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Golden test sets</h3>
+            <p>Curated, versioned collections of real inputs with expected behaviors: happy path, edge cases, known failure modes. The fixed yardstick that makes quality comparable across releases.</p>
+          </article>
+          <article class="card">
+            <h3>Semantic evaluation</h3>
+            <p>LLM outputs vary in wording while staying correct — assertions must compare meaning, not strings: embedding similarity, rubric-based judging, and structured-field extraction where exactness matters.</p>
+          </article>
+          <article class="card">
+            <h3>Factuality and grounding</h3>
+            <p>Every claim checked against the provided context and tool results. Unsupported claims are hallucinations, counted and tracked per release — not anecdotes.</p>
+          </article>
+          <article class="card">
+            <h3>Judge models</h3>
+            <p>A model scoring outputs against a rubric, calibrated against human-labeled examples. The workhorse of scale — never the sole authority.</p>
+          </article>
+          <article class="card">
+            <h3>Evaluation scorecards</h3>
+            <p>Per-release scores across intents and scenario classes, with human review loops on the edge cases. One number hides regressions; a scorecard shows where they happened.</p>
+          </article>
+          <article class="card">
+            <h3>Cost and latency budgets</h3>
+            <p>Quality that arrives too slowly or too expensively is still a failure. Budgets are part of the suite, checked on every release like any other assertion.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="regression">
+        <div class="section-head">
+          <p class="eyebrow">The Discipline</p>
+          <h2>Regression testing is where LLM quality is won or lost.</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">Why it matters</p>
+            <h3>Silent drift is the default failure mode</h3>
+            <p>
+              Across conversational AI projects, the recurring failure is the same: a model upgrade, a reworded prompt, or a new intent quietly regresses answers that used to work — and nobody notices until production. The fix is not more prompt tinkering; it is repeatable scenario suites, baseline comparisons that catch behavioral drift, and evaluation scorecards with human review on the edge cases.
+            </p>
+            <ul class="workshop-list">
+              <li><strong>Baseline on every release:</strong> scores recorded before launch, compared after every change.</li>
+              <li><strong>Gate on the comparison:</strong> releases ship when the suite holds, not when the demo looks good.</li>
+              <li><strong>Grow the suite:</strong> every production failure becomes a new test case — release confidence compounds.</li>
+            </ul>
+          </article>
+          <article class="project-card">
+            <p class="project-kicker">Proven in production</p>
+            <h3>Conversational quality engineering</h3>
+            <p>
+              This page describes the discipline behind my production work: repeatable scenario suites with baseline comparisons and drift checks against silent quality regressions across intents and edge-case conversations — with higher release confidence and fewer production regressions as the measured result.
+            </p>
+            <div class="project-actions">
+              <a href="../index.html#technical-proof">Read the case study</a>
+              <a href="../notes/conversational-ai-testing.html">Field note on testing rigor</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="faq">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions about LLM evaluation and testing.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How do you test LLM applications?</summary>
+            <p>
+              Golden test sets of real inputs, semantic evaluation instead of exact-match assertions, judge models plus deterministic checks for scoring, baseline comparisons on every change, and production monitoring on live-traffic samples.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What is LLM regression testing?</summary>
+            <p>
+              Re-running a fixed evaluation suite after every model, prompt, retrieval, or tool change and comparing against the recorded baseline — catching the silent behavioral drift that follows updates nobody thought were risky.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What is a golden test set?</summary>
+            <p>
+              A curated, versioned collection of representative inputs with expected behaviors — the fixed yardstick that makes quality comparable across releases, growing as production failures become new test cases.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How do you evaluate hallucinations?</summary>
+            <p>
+              Check every factual claim against the provided context and tool results; unsupported claims count. Deterministic checks for verifiable fields, a calibrated judge for grounding, human review on flagged samples.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How is agent evaluation different?</summary>
+            <p>
+              Agents add tool use, multi-step state, and contract compliance on top of text quality — covered separately in <a href="../ai-agent-evaluation/">AI agent evaluation</a>.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section reveal" id="author">
+        <div class="section-head">
+          <p class="eyebrow">About the Author</p>
+          <h2>Alexandru DAN</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p>
+              Alexandru Dan is an Applied AI Systems Architect, AI Professor, and CEO at TVL Tech, focused on conversational AI quality engineering: regression suites, drift detection, and release-confidence engineering for LLM applications in production. He teaches LLMs, Prompt Engineering, and AI Explainability at the Bucharest University of Economic Studies, and brought these themes to the European Chatbot &amp; Conversational AI Summit 2026.
+            </p>
+            <div class="project-actions">
+              <a href="../index.html#about">Full profile</a>
+              <a href="../speaking-workshops.html">Workshops on testing discipline</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <p class="project-kicker">Related</p>
+            <ul class="workshop-list">
+              <li><a href="../ai-agent-evaluation/">AI agent evaluation</a></li>
+              <li><a href="../enterprise-ai-agents/">Enterprise AI agents — the Production Stack</a></li>
+              <li><a href="../notes/conversational-ai-testing.html">Testing rigor in conversational AI</a></li>
+              <li><a href="../ai-consultant-romania/">AI consulting services</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta reveal" id="contact">
+        <p class="eyebrow">Contact</p>
+        <h2>Does your LLM app survive a model upgrade?</h2>
+        <p>
+          For golden-set design, regression suites, or a release-confidence review, email me directly.
+        </p>
+        <a class="button button-solid" href="mailto:alex@tvl.tech?subject=LLM%20Evaluation">alex@tvl.tech</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="../ai-agent-evaluation/">Agent Evaluation</a> · <a href="../enterprise-ai-agents/">AI Agents</a> · <a href="../ai-consultant-romania/">AI Consulting</a> · <a href="../notes/">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

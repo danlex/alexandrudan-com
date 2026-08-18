@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Agent Evaluation — How to Test AI Agents Before Production | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="How to evaluate AI agents before and after production: task success rate, tool-use correctness, hallucination rate, contract compliance, deterministic checks, LLM-as-a-judge, regression and adversarial testing, and production monitoring. By Alexandru DAN."
+    />
+    <meta
+      name="keywords"
+      content="AI agent evaluation, AI agent testing, evaluate agent reliability, AI agent benchmark, LLM-as-a-judge, agent regression testing, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="AI Agent Evaluation — How to Test AI Agents Before Production" />
+    <meta property="og:description" content="Task success rate, tool-use correctness, contract compliance, LLM-as-a-judge, regression and adversarial testing, and production monitoring for AI agents." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/ai-agent-evaluation/" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Agent Evaluation — How to Test AI Agents Before Production" />
+    <meta name="twitter:description" content="The evaluation stack for AI agents: metrics, judges, regression suites, and production monitoring." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/ai-agent-evaluation/" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/ai-agent-evaluation/" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/ai-agent-evaluation/" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://alexandrudan.com/ai-agent-evaluation/#article",
+        "headline": "AI Agent Evaluation: How to Test AI Agents Before Production",
+        "description": "A practical evaluation stack for AI agents: task success rate, tool-use correctness, hallucination rate, contract compliance, deterministic checks, LLM-as-a-judge, human evaluation, regression testing, adversarial testing, and production monitoring.",
+        "url": "https://alexandrudan.com/ai-agent-evaluation/",
+        "mainEntityOfPage": "https://alexandrudan.com/ai-agent-evaluation/",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "AI Agent Evaluation",
+        "keywords": "AI agent evaluation, AI agent testing, LLM-as-a-judge, regression testing, adversarial testing, production monitoring",
+        "isPartOf": { "@id": "https://alexandrudan.com/#website" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://alexandrudan.com/#person",
+        "name": "Alexandru DAN",
+        "alternateName": ["Alexandru Dan", "Alex Dan"],
+        "url": "https://alexandrudan.com/",
+        "image": "https://alexandrudan.com/alexandru-dan-portrait.jpg",
+        "jobTitle": "Applied AI Systems Architect and CEO",
+        "worksFor": { "@id": "https://www.tvl.tech/#organization" },
+        "sameAs": [
+          "https://alexandrudan.com/",
+          "https://www.wikidata.org/wiki/Q141017681",
+          "https://www.linkedin.com/in/alexandrudan/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://www.tvl.tech/#organization",
+        "name": "TVL Tech",
+        "url": "https://www.tvl.tech/",
+        "logo": "https://alexandrudan.com/tvl-tech-wordmark-orange.svg",
+        "founder": { "@id": "https://alexandrudan.com/#person" },
+        "sameAs": [
+          "https://www.tvl.tech/",
+          "https://www.linkedin.com/company/tvl-technology/",
+          "https://tvltech.lu/",
+          "https://www.tvl.technology/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://alexandrudan.com/ai-agent-evaluation/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you evaluate an AI agent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Measure it on four levels: outcomes (task success rate against a scenario suite), behavior (tool-use correctness, hallucination rate, contract compliance), robustness (regression testing after every model or prompt change, adversarial testing), and operations (production monitoring of quality, cost, and latency). Deterministic checks catch what can be verified in code; LLM-as-a-judge and human review cover what cannot."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What metrics matter for AI agent testing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Task success rate, tool-use correctness (right tool, right arguments, right order), hallucination rate, contract compliance (scope and approval rules respected), escalation correctness, and operational metrics: cost per task, latency, and failure isolation time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is LLM-as-a-judge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Using a language model to score another model's output against a rubric — factuality, completeness, tone, policy compliance. It scales evaluation beyond what humans can review, but it must itself be calibrated against human-labeled examples and combined with deterministic checks, because judges have their own failure modes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you test AI agents before production?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Build a golden scenario suite covering the happy path, edge cases, and known failure modes; record baseline scores; re-run the suite on every model, prompt, or tool change to catch regressions; add adversarial scenarios that try to break contracts; and gate release on the comparison, not on demos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who can help with AI agent evaluation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Alexandru DAN is an Applied AI Systems Architect and CEO at TVL Tech who builds evaluation and regression discipline into production AI systems, teaches AI Agents and AI Explainability at ASE Bucharest, and consults for organizations in Romania, Luxembourg, and across Europe."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Enterprise AI Agents", "item": "https://alexandrudan.com/enterprise-ai-agents/" },
+          { "@type": "ListItem", "position": 3, "name": "AI Agent Evaluation", "item": "https://alexandrudan.com/ai-agent-evaluation/" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>AI Agent Evaluation</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="../enterprise-ai-agents/">AI Agents</a>
+          <a href="../llm-evaluation-testing/">LLM Testing</a>
+          <a href="../ai-consultant-romania/">AI Consulting</a>
+          <a href="../notes/">Notes</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Agentic AI · Evaluation</p>
+          <h1>AI agent evaluation: <span class="gradient-text">how to test agents before production</span>.</h1>
+          <p class="lead">
+            Evaluating an AI agent means measuring four things: whether it completes tasks (success rate), whether it behaves correctly along the way (tool use, hallucinations, contract compliance), whether it stays correct as models and prompts change (regression and adversarial testing), and whether you can see it working in production (monitoring). Demos prove none of these.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-solid" href="mailto:alex@tvl.tech?subject=AI%20Agent%20Evaluation">Discuss your evaluation setup</a>
+            <a class="button button-ghost" href="../enterprise-ai-agents/">The AI Agent Production Stack</a>
+          </div>
+          <ul class="chip-row" aria-label="Core concepts">
+            <li>Task Success Rate</li>
+            <li>Tool-Use Correctness</li>
+            <li>LLM-as-a-Judge</li>
+            <li>Regression Testing</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section reveal" id="metrics">
+        <div class="section-head">
+          <p class="eyebrow">What to Measure</p>
+          <h2>The metrics that separate reliable agents from lucky demos.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Task success rate</h3>
+            <p>The share of scenario-suite tasks the agent completes end-to-end to spec. Measured against a fixed golden suite, not ad-hoc prompts, so the number is comparable across releases.</p>
+          </article>
+          <article class="card">
+            <h3>Tool-use correctness</h3>
+            <p>Right tool, right arguments, right order — and correct behavior when a tool fails. Most agent failures in practice are tool-call failures, not reasoning failures.</p>
+          </article>
+          <article class="card">
+            <h3>Hallucination rate</h3>
+            <p>How often the agent asserts things its context and tool results do not support: invented data, fabricated confirmations, claimed actions that never ran.</p>
+          </article>
+          <article class="card">
+            <h3>Contract compliance</h3>
+            <p>Does the agent respect its written scope: forbidden actions never taken, approval-required actions always escalated, boundaries held under adversarial pressure.</p>
+          </article>
+          <article class="card">
+            <h3>Escalation correctness</h3>
+            <p>Agents with human oversight must know when to stop. Over-escalation destroys the value; under-escalation destroys the trust. Both are measurable.</p>
+          </article>
+          <article class="card">
+            <h3>Cost and latency</h3>
+            <p>Cost per completed task and end-to-end latency, tracked per release. An agent that doubles in cost after a prompt change failed a test, even if quality held.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="methods">
+        <div class="section-head">
+          <p class="eyebrow">How to Measure</p>
+          <h2>Layer deterministic checks, judges, and humans.</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The evaluation stack</p>
+            <h3>Three layers, cheapest first</h3>
+            <ul class="workshop-list">
+              <li><strong>Deterministic checks:</strong> everything verifiable in code — schema validity, forbidden-action detection, tool-argument validation, output format. Fast, free, and never wrong about what they check.</li>
+              <li><strong>LLM-as-a-judge:</strong> a model scoring outputs against a rubric for factuality, completeness, and policy compliance. Scales beyond human review, but must be calibrated against human-labeled examples — judges have failure modes too.</li>
+              <li><strong>Human evaluation:</strong> reserved for the edge cases the first two layers flag, and for periodically re-calibrating the judge. Humans are the ground truth, not the workhorse.</li>
+            </ul>
+          </article>
+          <article class="project-card">
+            <p class="project-kicker">Discipline</p>
+            <h3>Regression and adversarial testing</h3>
+            <ul class="workshop-list">
+              <li><strong>Regression:</strong> re-run the golden suite on every model, prompt, or tool change and compare against the recorded baseline. Silent drift is the default failure mode — a model upgrade or reworded prompt quietly regresses behavior that used to work.</li>
+              <li><strong>Adversarial:</strong> scenarios written to break the agent — prompt injection in tool results, conflicting instructions, requests just outside scope. Contract compliance is only proven under attack.</li>
+            </ul>
+            <div class="project-actions">
+              <a href="../notes/conversational-ai-testing.html">Field note: testing rigor in conversational AI</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="production">
+        <div class="section-head">
+          <p class="eyebrow">After Launch</p>
+          <h2>Production monitoring closes the loop.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Trace everything</h3>
+            <p>Every tool call, decision, and escalation logged, so issues are isolated in minutes. This is the observability layer of the <a href="../enterprise-ai-agents/">AI Agent Production Stack</a>.</p>
+          </article>
+          <article class="card">
+            <h3>Score a sample continuously</h3>
+            <p>Run the judge on a sample of live traffic, not just pre-release suites. Production distributions drift away from any golden set.</p>
+          </article>
+          <article class="card">
+            <h3>Feed failures back</h3>
+            <p>Every production failure becomes a new scenario in the regression suite. The suite grows with the system — that is what makes release confidence compound.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="faq">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions about AI agent evaluation.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How do you evaluate an AI agent?</summary>
+            <p>
+              On four levels: outcomes (task success rate against a scenario suite), behavior (tool-use correctness, hallucination rate, contract compliance), robustness (regression and adversarial testing), and operations (production monitoring of quality, cost, and latency).
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What is LLM-as-a-judge?</summary>
+            <p>
+              Using a language model to score another model's output against a rubric. It scales evaluation beyond human review but must be calibrated against human-labeled examples and combined with deterministic checks.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How do you test AI agents before production?</summary>
+            <p>
+              Build a golden scenario suite (happy path, edge cases, known failure modes), record baselines, re-run on every change, add adversarial scenarios, and gate release on the comparison — not on demos.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How do you measure AI agent reliability?</summary>
+            <p>
+              Reliability is the trend of the metrics over releases: task success rate stable or rising, regression count falling, contract violations at zero, failure isolation time in minutes. A single good run measures nothing.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Who can help with AI agent evaluation?</summary>
+            <p>
+              I build evaluation and regression discipline into production AI systems and teach AI Agents and AI Explainability at ASE Bucharest. For your setup, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a> or see <a href="../ai-consultant-romania/">AI consulting services</a>.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section reveal" id="author">
+        <div class="section-head">
+          <p class="eyebrow">About the Author</p>
+          <h2>Alexandru DAN</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p>
+              Alexandru Dan is an Applied AI Systems Architect, AI Professor, and CEO at TVL Tech. His production work includes conversational AI quality engineering — repeatable scenario suites with baseline comparisons and drift checks that raised release confidence and cut production regressions — and he teaches AI Agents, LLMs, and AI Explainability at the Bucharest University of Economic Studies.
+            </p>
+            <div class="project-actions">
+              <a href="../index.html#technical-proof">Case studies</a>
+              <a href="../llm-evaluation-testing/">LLM evaluation and testing</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <p class="project-kicker">Related</p>
+            <ul class="workshop-list">
+              <li><a href="../enterprise-ai-agents/">Enterprise AI agents — the Production Stack</a></li>
+              <li><a href="../llm-evaluation-testing/">LLM evaluation and testing</a></li>
+              <li><a href="../notes/conversational-ai-testing.html">Testing rigor in conversational AI</a></li>
+              <li><a href="../speaking-workshops.html">Workshops on evaluation discipline</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta reveal" id="contact">
+        <p class="eyebrow">Contact</p>
+        <h2>Shipping an agent you can't yet measure?</h2>
+        <p>
+          For evaluation design, regression suites, or an agent-readiness review, email me directly.
+        </p>
+        <a class="button button-solid" href="mailto:alex@tvl.tech?subject=AI%20Agent%20Evaluation">alex@tvl.tech</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="../enterprise-ai-agents/">AI Agents</a> · <a href="../llm-evaluation-testing/">LLM Testing</a> · <a href="../ai-consultant-romania/">AI Consulting</a> · <a href="../notes/">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

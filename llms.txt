@@ -36,6 +36,8 @@ Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a d
 - [AI Consultant Romania](https://alexandrudan.com/ai-consultant-romania/): enterprise AI strategy, implementation, agentic systems, LLM evaluation, and EU AI Act governance for Romanian and European organizations
 - [Corporate AI Training Romania](https://alexandrudan.com/corporate-ai-training-romania/): TVL Academy programs for teams and executives — prompt engineering, custom AI assistants (ChatGPT, Claude, Gemini), AI Design Sprint, governance
 - [Enterprise AI Agents](https://alexandrudan.com/enterprise-ai-agents/): the AI Agent Production Stack — architecture, contracts, judge models, evaluation, observability, human oversight, and governance for AI agents in production
+- [AI Agent Evaluation](https://alexandrudan.com/ai-agent-evaluation/): how to test AI agents before production — task success rate, tool-use correctness, contract compliance, LLM-as-a-judge, regression and adversarial testing
+- [LLM Evaluation & Testing](https://alexandrudan.com/llm-evaluation-testing/): golden test sets, semantic evaluation, hallucination detection, judge models, regression testing, and production monitoring for LLM applications
 - [Speaking & Workshops](https://alexandrudan.com/speaking-workshops.html): keynote and workshop topics, formats, and booking
 - [Labs](https://alexandrudan.com/labs.html): experimental projects (Suno Lab, AutoResearch, Particles, Treasure Hunt)
 
