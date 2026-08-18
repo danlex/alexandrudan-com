@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM regression testing: catching silent drift | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field note by Alexandru DAN: why LLM behavior drifts silently after model and prompt changes, and how baseline comparisons against a golden suite turn releases from bets into decisions."
+    />
+    <meta
+      name="keywords"
+      content="LLM regression testing, prompt regression testing, behavioral drift, golden test sets, baseline comparison, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="LLM regression testing: catching silent drift" />
+    <meta property="og:description" content="Baseline comparisons against a golden suite turn LLM releases from bets into decisions." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/llm-regression-testing.html" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LLM regression testing: catching silent drift" />
+    <meta name="twitter:description" content="Silent drift is the default failure mode of LLM applications. Regression discipline is the fix." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/llm-regression-testing.html" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/llm-regression-testing.html" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/llm-regression-testing.html" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://alexandrudan.com/notes/llm-regression-testing.html#article",
+        "headline": "LLM regression testing: catching silent drift",
+        "description": "Why LLM behavior drifts silently after model and prompt changes, and how baseline comparisons against a golden suite turn releases from bets into decisions.",
+        "url": "https://alexandrudan.com/notes/llm-regression-testing.html",
+        "mainEntityOfPage": "https://alexandrudan.com/notes/llm-regression-testing.html",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "LLM Evaluation",
+        "keywords": "LLM regression testing, behavioral drift, golden test sets, baseline comparison",
+        "isPartOf": { "@id": "https://alexandrudan.com/notes/#blog" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" },
+          { "@type": "ListItem", "position": 3, "name": "LLM regression testing", "item": "https://alexandrudan.com/notes/llm-regression-testing.html" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../llm-evaluation-testing/">LLM Testing</a>
+          <a href="../speaking-workshops.html">Speaking</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field Note · LLM Evaluation · August 2026</p>
+          <h1>LLM regression testing: catching silent drift.</h1>
+          <p class="lead">
+            LLM applications don't fail loudly. A model upgrade, a reworded prompt, or a new retrieval source quietly changes behavior that used to work — and nobody notices until users do. Regression testing is the fix: a fixed golden suite, scores recorded as baselines, and every change gated on the comparison.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The note</p>
+            <p>
+              Classic software regression testing asserts exact outputs; LLM regression testing asserts stable behavior. The unit is a scenario — a real input with an expected behavior — and the assertion is semantic: did the answer stay grounded, complete, on-policy, within budget? Exact-match tests give false alarms on every rewording; no tests give silence on every real regression. Scenario suites with semantic scoring are the middle that works.
+            </p>
+            <p>
+              The discipline is unglamorous and it compounds: record baseline scores before launch; re-run the suite on <em>every</em> change, including the ones "too small to matter" (those are the ones that matter); and convert every production failure into a new scenario, so the suite grows with the system. In my conversational AI work this is exactly what raised release confidence and cut production regressions — the case study behind the <a href="conversational-ai-testing.html">testing-rigor note</a>.
+            </p>
+            <p>
+              Costs stay sane because the scoring is layered: deterministic checks first, a <a href="judge-models.html">calibrated judge model</a> for the semantic middle, humans only on flagged edges. The full setup — golden sets, scorecards, drift checks, cost and latency budgets — is in the <a href="../llm-evaluation-testing/">LLM evaluation and testing guide</a>.
+            </p>
+          </article>
+          <article class="project-card">
+            <h3>Related</h3>
+            <ul class="workshop-list">
+              <li><a href="../llm-evaluation-testing/">LLM evaluation and testing</a></li>
+              <li><a href="conversational-ai-testing.html">Testing rigor in conversational AI</a></li>
+              <li><a href="judge-models.html">Judge models: the quality gate</a></li>
+            </ul>
+            <p class="workshop-note">For a regression-suite workshop, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="index.html">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

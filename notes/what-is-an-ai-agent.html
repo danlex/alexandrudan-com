@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What is an AI agent — and what it isn't | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field note by Alexandru DAN: a working definition of AI agents — systems that own tasks within guardrails — and the difference between agents, assistants, and automation."
+    />
+    <meta
+      name="keywords"
+      content="what is an AI agent, AI agent vs AI assistant, agentic AI, AI agent definition, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="What is an AI agent — and what it isn't" />
+    <meta property="og:description" content="A working definition of AI agents, and the difference between agents, assistants, and automation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/what-is-an-ai-agent.html" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What is an AI agent — and what it isn't" />
+    <meta name="twitter:description" content="Agents own tasks within guardrails; assistants augment turns. The difference decides your architecture." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/what-is-an-ai-agent.html" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/what-is-an-ai-agent.html" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/what-is-an-ai-agent.html" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://alexandrudan.com/notes/what-is-an-ai-agent.html#article",
+        "headline": "What is an AI agent — and what it isn't",
+        "description": "A working definition of AI agents — systems that own tasks within guardrails — and the difference between agents, assistants, and automation.",
+        "url": "https://alexandrudan.com/notes/what-is-an-ai-agent.html",
+        "mainEntityOfPage": "https://alexandrudan.com/notes/what-is-an-ai-agent.html",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "Agentic AI",
+        "keywords": "AI agent, agentic AI, AI assistant, agent definition",
+        "isPartOf": { "@id": "https://alexandrudan.com/notes/#blog" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" },
+          { "@type": "ListItem", "position": 3, "name": "What is an AI agent", "item": "https://alexandrudan.com/notes/what-is-an-ai-agent.html" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../enterprise-ai-agents/">AI Agents</a>
+          <a href="../speaking-workshops.html">Speaking</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field Note · Agentic AI · August 2026</p>
+          <h1>What is an AI agent — and what it isn't.</h1>
+          <p class="lead">
+            An AI agent is a system that uses a language model to plan and execute multi-step tasks — calling tools, checking results, and escalating to humans at defined checkpoints. The one-line test: an assistant augments a task you drive; an agent owns a task within guardrails you set.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The note</p>
+            <p>
+              Most confusion about agents comes from stretching the word. A chatbot that answers questions is an assistant: the human decides what happens next after every turn. A workflow that follows a fixed script is automation: nothing decides anything. An agent sits between them — it is given an objective, plans its own steps, uses tools against real systems, and makes bounded decisions along the way.
+            </p>
+            <p>
+              "Bounded" is the operative word. In production, the boundary is engineered, not hoped for: explicit contracts for what the agent may, must not, and must-ask-before doing; human checkpoints on consequential actions; and evaluation that proves the boundaries hold. That's the architecture I describe in the <a href="../enterprise-ai-agents/">AI Agent Production Stack</a> — and it's why "how do we test this?" is the first question worth asking about any agent, covered in the <a href="../ai-agent-evaluation/">agent evaluation guide</a>.
+            </p>
+            <p>
+              A useful heuristic from teaching this at ASE Bucharest: if removing the human from the loop changes nothing, you built automation; if removing the model from the loop changes nothing, you built a form. An agent is what you have when both the model's judgment and the human's oversight are load-bearing.
+            </p>
+          </article>
+          <article class="project-card">
+            <h3>Related</h3>
+            <ul class="workshop-list">
+              <li><a href="../enterprise-ai-agents/">Enterprise AI agents — the Production Stack</a></li>
+              <li><a href="../ai-agent-evaluation/">AI agent evaluation</a></li>
+              <li><a href="judge-models.html">Judge models: the quality gate</a></li>
+            </ul>
+            <p class="workshop-note">For an agent-readiness workshop with your team, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="index.html">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

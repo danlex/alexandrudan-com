@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Judge models: the quality gate for AI systems | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field note by Alexandru DAN: what judge models (LLM-as-a-judge) are, where they belong in an evaluation stack, and why an uncalibrated judge is just a second opinion you can't trust."
+    />
+    <meta
+      name="keywords"
+      content="judge models, LLM-as-a-judge, AI evaluation, model-based evaluation, judge calibration, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="Judge models: the quality gate for AI systems" />
+    <meta property="og:description" content="What LLM-as-a-judge is, where it belongs in an evaluation stack, and why calibration decides whether it's a gate or a guess." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/judge-models.html" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Judge models: the quality gate for AI systems" />
+    <meta name="twitter:description" content="An uncalibrated judge is just a second opinion you can't trust." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/judge-models.html" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/judge-models.html" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/judge-models.html" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://alexandrudan.com/notes/judge-models.html#article",
+        "headline": "Judge models: the quality gate for AI systems",
+        "description": "What judge models (LLM-as-a-judge) are, where they belong in an evaluation stack, and why an uncalibrated judge is just a second opinion you can't trust.",
+        "url": "https://alexandrudan.com/notes/judge-models.html",
+        "mainEntityOfPage": "https://alexandrudan.com/notes/judge-models.html",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "LLM Evaluation",
+        "keywords": "judge models, LLM-as-a-judge, evaluation, calibration",
+        "isPartOf": { "@id": "https://alexandrudan.com/notes/#blog" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" },
+          { "@type": "ListItem", "position": 3, "name": "Judge models", "item": "https://alexandrudan.com/notes/judge-models.html" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../ai-agent-evaluation/">Agent Evaluation</a>
+          <a href="../llm-evaluation-testing/">LLM Testing</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field Note · LLM Evaluation · August 2026</p>
+          <h1>Judge models: the quality gate for AI systems.</h1>
+          <p class="lead">
+            A judge model is a language model that scores another model's output against a rubric — factuality, completeness, tone, policy compliance. It's how evaluation scales past what humans can read. But a judge is only a gate if it's calibrated; otherwise it's a second opinion you can't trust.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The note</p>
+            <p>
+              The pattern teams get wrong is treating the judge as an oracle. Judges have the same failure modes as the systems they score: rubric ambiguity produces inconsistent verdicts, verbose outputs get scored as better, and a judge can be confidently wrong about factuality it has no way to check. Uncalibrated judge scores drift exactly like the model behavior they're supposed to police.
+            </p>
+            <p>
+              The working discipline is three rules. First, deterministic checks before the judge: anything verifiable in code — formats, forbidden actions, required fields — never goes to a model for an opinion. Second, calibrate the judge against human-labeled examples, and re-calibrate when you change the judge's model or rubric; agreement with humans is the judge's own test suite. Third, route the judge's low-confidence and high-stakes verdicts to human review — the judge is the workhorse, humans are the ground truth.
+            </p>
+            <p>
+              Placed that way, the judge becomes the layer that makes <a href="llm-regression-testing.html">regression testing</a> affordable and <a href="../ai-agent-evaluation/">agent evaluation</a> continuous: it scores every release against the golden suite and a sample of live traffic, and flags exactly the cases worth a human's minutes. That's the "judge" layer of the <a href="../enterprise-ai-agents/">AI Agent Production Stack</a> — one layer, not the whole stack.
+            </p>
+          </article>
+          <article class="project-card">
+            <h3>Related</h3>
+            <ul class="workshop-list">
+              <li><a href="../llm-evaluation-testing/">LLM evaluation and testing</a></li>
+              <li><a href="../ai-agent-evaluation/">AI agent evaluation</a></li>
+              <li><a href="llm-regression-testing.html">LLM regression testing</a></li>
+            </ul>
+            <p class="workshop-note">For evaluation-design help, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="index.html">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>
