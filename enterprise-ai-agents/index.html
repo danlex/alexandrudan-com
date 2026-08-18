@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise AI Agents — Architecture, Evaluation &amp; Human Oversight | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="What enterprise AI agents are, how they work, and how to run them in production: the AI Agent Production Stack by Alexandru DAN — orchestration, tools, memory, judge models, contracts, observability, human oversight, and governance."
+    />
+    <meta
+      name="keywords"
+      content="enterprise AI agents, AI agents for business, agentic AI enterprise, AI agent architecture, AI agent production stack, human oversight, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="Enterprise AI Agents — Architecture, Evaluation &amp; Human Oversight" />
+    <meta property="og:description" content="The AI Agent Production Stack: how enterprise AI agents are architected, evaluated, and governed in production, by Alexandru DAN." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/enterprise-ai-agents/" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Enterprise AI Agents — Architecture, Evaluation &amp; Human Oversight" />
+    <meta name="twitter:description" content="The AI Agent Production Stack: architecture, evaluation, and governance for AI agents in production." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/enterprise-ai-agents/" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/enterprise-ai-agents/" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/enterprise-ai-agents/" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://alexandrudan.com/enterprise-ai-agents/#article",
+        "headline": "Enterprise AI Agents: Architecture, Evaluation, and Human Oversight",
+        "description": "What enterprise AI agents are, how they differ from AI assistants, and how to run them in production using the AI Agent Production Stack: model, context, tools, memory, orchestrator, contracts, judge, evaluation, observability, human oversight, and governance.",
+        "url": "https://alexandrudan.com/enterprise-ai-agents/",
+        "mainEntityOfPage": "https://alexandrudan.com/enterprise-ai-agents/",
+        "datePublished": "2026-08-18",
+        "dateModified": "2026-08-18",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "Agentic AI",
+        "keywords": "enterprise AI agents, agentic AI, AI agent architecture, AI agent evaluation, human oversight, AI Agent Production Stack",
+        "isPartOf": { "@id": "https://alexandrudan.com/#website" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://alexandrudan.com/#person",
+        "name": "Alexandru DAN",
+        "alternateName": ["Alexandru Dan", "Alex Dan"],
+        "url": "https://alexandrudan.com/",
+        "image": "https://alexandrudan.com/alexandru-dan-portrait.jpg",
+        "jobTitle": "Applied AI Systems Architect and CEO",
+        "worksFor": { "@id": "https://www.tvl.tech/#organization" },
+        "sameAs": [
+          "https://alexandrudan.com/",
+          "https://www.wikidata.org/wiki/Q141017681",
+          "https://www.linkedin.com/in/alexandrudan/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://www.tvl.tech/#organization",
+        "name": "TVL Tech",
+        "url": "https://www.tvl.tech/",
+        "logo": "https://alexandrudan.com/tvl-tech-wordmark-orange.svg",
+        "founder": { "@id": "https://alexandrudan.com/#person" },
+        "sameAs": [
+          "https://www.tvl.tech/",
+          "https://www.linkedin.com/company/tvl-technology/",
+          "https://tvltech.lu/",
+          "https://www.tvl.technology/"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://alexandrudan.com/enterprise-ai-agents/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an enterprise AI agent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An enterprise AI agent is a software system that uses a language model to plan and execute multi-step tasks against business systems — calling tools, reading and writing data, and making bounded decisions — under explicit constraints, evaluation, and human oversight. Unlike a chat assistant, an agent acts: it completes workflows rather than only answering questions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between an AI agent and an AI assistant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An AI assistant responds to a person turn by turn; the human drives the workflow. An AI agent is given an objective and drives the workflow itself: it plans steps, calls tools, checks results, and escalates to a human at defined checkpoints. Assistants augment a task; agents own a task within guardrails."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does an enterprise AI agent architecture include?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A production agent architecture covers eleven layers — the AI Agent Production Stack: model, context, tools, memory, orchestrator, contracts, judge, evaluation, observability, human oversight, and governance. Most failed agent projects skip the last five."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What human oversight do AI agents need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Explicit human checkpoints on consequential actions: approvals before irreversible or outward-facing steps, review gates on low-confidence outputs, and escalation paths when the agent's judge or contract checks flag a violation. Oversight is designed into the workflow graph, not added as an afterthought."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who can help a company deploy AI agents?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Alexandru DAN is an Applied AI Systems Architect and CEO at TVL Tech who designs, evaluates, and deploys agentic AI systems for organizations in Romania, Luxembourg, and across Europe, and teaches AI Agents at the Bucharest University of Economic Studies (ASE Bucharest)."
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Enterprise AI Agents", "item": "https://alexandrudan.com/enterprise-ai-agents/" }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Enterprise AI Agents</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="../ai-consultant-romania/">AI Consulting</a>
+          <a href="../corporate-ai-training-romania/">AI Training</a>
+          <a href="../speaking-workshops.html">Speaking</a>
+          <a href="../notes/">Notes</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Agentic AI · Production Systems</p>
+          <h1>Enterprise AI agents: <span class="gradient-text">architecture, evaluation, and human oversight</span>.</h1>
+          <p class="lead">
+            An enterprise AI agent is a system that uses a language model to plan and execute multi-step tasks against business systems — calling tools, making bounded decisions, and escalating to humans at defined checkpoints. The difference between a demo agent and a production agent is not the model. It is everything around the model: orchestration, contracts, evaluation, observability, and governance.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-solid" href="mailto:alex@tvl.tech?subject=Enterprise%20AI%20Agents">Discuss an agent project</a>
+            <a class="button button-ghost" href="../ai-consultant-romania/">AI consulting services</a>
+          </div>
+          <ul class="chip-row" aria-label="Core concepts">
+            <li>Agentic Workflows</li>
+            <li>Human Oversight</li>
+            <li>Judge Models</li>
+            <li>Agent Contracts</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section reveal" id="stack">
+        <div class="section-head">
+          <p class="eyebrow">Framework</p>
+          <h2>The AI Agent Production Stack.</h2>
+        </div>
+        <p class="about-grid">
+          Eleven layers separate an agent prototype from an agent your organization can rely on. Most failed agent projects implement the first five and skip the rest.
+        </p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>1–3. Model, Context, Tools</h3>
+            <p>The capable core: a language model, the retrieval and context strategy that grounds it in your data, and the tools it may call — each with explicit permissions and failure handling.</p>
+          </article>
+          <article class="card">
+            <h3>4–5. Memory, Orchestrator</h3>
+            <p>State that persists across steps and sessions, and an orchestration layer — typically an event-driven workflow graph — that sequences steps with traceability and controlled execution.</p>
+          </article>
+          <article class="card">
+            <h3>6–7. Contracts, Judge</h3>
+            <p>Explicit rules the agent must respect (scope, approvals, forbidden actions) and a judge — deterministic checks plus model-based review — that verifies outputs before they take effect.</p>
+          </article>
+          <article class="card">
+            <h3>8–9. Evaluation, Observability</h3>
+            <p>Repeatable scenario suites with baseline comparisons and drift checks before every release, and production monitoring that makes agent behavior inspectable after it.</p>
+          </article>
+          <article class="card">
+            <h3>10–11. Human Oversight, Governance</h3>
+            <p>Human checkpoints on consequential actions, and governance by design: risk review, accountability, and audit-ready documentation aligned with EU AI Act expectations.</p>
+          </article>
+          <article class="card">
+            <h3>Why the order matters</h3>
+            <p>Layers 1–5 make an agent work in a demo. Layers 6–11 make it survive real users, model updates, and audits. Budget accordingly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="oversight">
+        <div class="section-head">
+          <p class="eyebrow">How It Works</p>
+          <h2>Agentic behavior with traceability and control.</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">Design principles</p>
+            <h3>Event-driven workflows with human checkpoints</h3>
+            <ul class="workshop-list">
+              <li><strong>Bounded autonomy:</strong> the agent owns routine steps; humans own consequential ones. Checkpoint placement is an architecture decision, not a UX detail.</li>
+              <li><strong>Deterministic where possible:</strong> validation, permissions, and routing are code; the model handles what genuinely needs judgment.</li>
+              <li><strong>Everything traceable:</strong> every tool call, decision, and escalation is logged, so issues are isolated in minutes, not days.</li>
+              <li><strong>Regression-tested:</strong> agent behavior is re-verified against scenario suites after every model or prompt change — the same discipline as <a href="../notes/conversational-ai-testing.html">conversational AI testing</a>.</li>
+            </ul>
+          </article>
+          <article class="project-card">
+            <p class="project-kicker">Evidence</p>
+            <h3>Built and stabilized in production</h3>
+            <p>
+              This approach comes from production work: an event-driven workflow AI with explicit human checkpoints built on FastAPI, Inngest, LangGraph, Gemini, Tavily, PostgreSQL, and Redis — deployed against unreliable agent behavior under changing prompts and user variability, with measurably better operational predictability.
+            </p>
+            <div class="project-actions">
+              <a href="../index.html#technical-proof">Read the case studies</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="checklist">
+        <div class="section-head">
+          <p class="eyebrow">Deployment Checklist</p>
+          <h2>Before an AI agent touches production.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Scope and contracts defined</h3>
+            <p>What the agent may do, must never do, and must ask approval for — written down and enforced in code, not in a prompt alone.</p>
+          </article>
+          <article class="card">
+            <h3>Evaluation baseline exists</h3>
+            <p>A scenario suite covering the happy path, edge cases, and known failure modes, with scores recorded before launch so drift is detectable.</p>
+          </article>
+          <article class="card">
+            <h3>Oversight gates placed</h3>
+            <p>Human approval on irreversible and outward-facing actions, with an escalation path when checks flag a violation.</p>
+          </article>
+          <article class="card">
+            <h3>Observability wired</h3>
+            <p>Tool calls, decisions, costs, and latencies logged and inspectable; an on-call owner who can pause the agent.</p>
+          </article>
+          <article class="card">
+            <h3>Governance documented</h3>
+            <p>Risk classification, human oversight design, and system documentation ready for internal review and EU AI Act expectations.</p>
+          </article>
+          <article class="card">
+            <h3>Rollback rehearsed</h3>
+            <p>A tested way to revert the agent's actions and disable it quickly — before you need it.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="faq">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions about enterprise AI agents.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What is an enterprise AI agent?</summary>
+            <p>
+              A software system that uses a language model to plan and execute multi-step tasks against business systems — calling tools, reading and writing data, and making bounded decisions — under explicit constraints, evaluation, and human oversight. Unlike a chat assistant, an agent acts: it completes workflows rather than only answering questions.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between an AI agent and an AI assistant?</summary>
+            <p>
+              An assistant responds to a person turn by turn; the human drives the workflow. An agent is given an objective and drives the workflow itself — planning steps, calling tools, checking results, and escalating at defined checkpoints. Assistants augment a task; agents own a task within guardrails.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What does a production agent architecture include?</summary>
+            <p>
+              The AI Agent Production Stack: model, context, tools, memory, orchestrator, contracts, judge, evaluation, observability, human oversight, and governance. Layers 1–5 make a demo; layers 6–11 make production.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What human oversight do AI agents need?</summary>
+            <p>
+              Approvals before irreversible or outward-facing actions, review gates on low-confidence outputs, and escalation when contract or judge checks flag a violation — designed into the workflow graph from the start.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Who can help a company deploy AI agents?</summary>
+            <p>
+              I work with organizations in Romania, Luxembourg, and across Europe as an <a href="../ai-consultant-romania/">AI consultant</a>, teach AI Agents at ASE Bucharest, and run <a href="../corporate-ai-training-romania/">team training</a> on agentic AI. Email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section reveal" id="author">
+        <div class="section-head">
+          <p class="eyebrow">About the Author</p>
+          <h2>Alexandru DAN</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p>
+              Alexandru Dan is an Applied AI Systems Architect, AI Professor, and CEO at TVL Tech. He designs, evaluates, and deploys agentic AI systems in production, teaches AI Agents, LLMs, and AI Explainability at the Bucharest University of Economic Studies, and speaks publicly on agentic workflows with human oversight — including as keynote speaker at ICMarkTech 2026.
+            </p>
+            <div class="project-actions">
+              <a href="../index.html#about">Full profile</a>
+              <a href="../speaking-workshops.html">Speaking and workshops</a>
+            </div>
+          </article>
+          <article class="project-card">
+            <p class="project-kicker">Independent sources</p>
+            <ul class="workshop-list">
+              <li><a href="https://icmarktech.com/icmarktech-2026-announces-alexandru-dan-as-keynote-speaker/" target="_blank" rel="noreferrer">ICMarkTech 2026 keynote announcement</a></li>
+              <li><a href="https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619" target="_blank" rel="noreferrer">Ziarul Financiar: ZF Live interview</a></li>
+              <li><a href="https://republica.ro/autor/alexandrudan_2" target="_blank" rel="noreferrer">Republica: author profile and AI editorials</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta reveal" id="contact">
+        <p class="eyebrow">Contact</p>
+        <h2>Planning an AI agent your organization can trust?</h2>
+        <p>
+          For agent architecture, evaluation design, or oversight and governance reviews, email me directly.
+        </p>
+        <a class="button button-solid" href="mailto:alex@tvl.tech?subject=Enterprise%20AI%20Agents">alex@tvl.tech</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="../ai-consultant-romania/">AI Consulting</a> · <a href="../corporate-ai-training-romania/">AI Training</a> · <a href="../speaking-workshops.html">Speaking</a> · <a href="../notes/">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>

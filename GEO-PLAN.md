@@ -25,7 +25,8 @@ The plan below was written without visibility into the repository. Read it with 
 
 ## Execution log
 
-- **2026-08-17** — `seo-target-queries.md` extended to v1.1 (Tier 7, queries 26–35). Built `/ai-consultant-romania/` and `/corporate-ai-training-romania/` (Days 1–30 items 1–2); sitemap, llms.txt, and homepage internal links updated in the same pass.
+- **2026-08-17** — `seo-target-queries.md` extended to v1.1 (Tier 7, queries 26–35). Built `/ai-consultant-romania/` and `/corporate-ai-training-romania/` (Days 1–30 items 1–2); sitemap, llms.txt, and homepage internal links updated in the same pass. Deployed.
+- **2026-08-18** — Built `/enterprise-ai-agents/` (Days 1–30 item 4, Cluster A pillar) publishing the AI Agent Production Stack framework (§21). Strengthened `speaking-workshops.html` for Tier 7 queries 33–35 (title, description, Service areaServed +Romania/Luxembourg, Romania FAQ) instead of building the duplicate `/ai-speaker-romania/` page, per reconciliation note 2. Sitemap, llms.txt, and cluster cross-links updated in the same pass.
 
 ---
 
