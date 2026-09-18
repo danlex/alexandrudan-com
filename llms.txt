@@ -15,6 +15,7 @@ Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a d
 
 ## What he does
 
+- 1:1 executive AI strategy advisory for CEOs, CTOs, CIOs, and Chief AI Officers (CAIOs), including fractional / interim Chief AI Officer engagements
 - Applied AI systems architecture: LLMs in production, agentic AI workflows, event-driven AI with human oversight
 - Conversational AI testing: regression suites, drift detection, and release-confidence engineering
 - AI governance and EU AI Act readiness: governance by design, audit-ready documentation
@@ -33,6 +34,7 @@ Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a d
 ## Key pages
 
 - [Homepage / profile hub](https://alexandrudan.com/): full bio, expertise, case studies, and media kit
+- [Executive AI Strategy (1:1 advisory)](https://alexandrudan.com/executive-ai-strategy/): confidential one-on-one AI strategy advisory for CEOs, CTOs, CIOs, and Chief AI Officers — AI roadmap and investment decisions, agentic and production-AI architecture, evaluation standards, EU AI Act governance, and fractional / interim Chief AI Officer support
 - [AI Consultant Romania](https://alexandrudan.com/ai-consultant-romania/): enterprise AI strategy, implementation, agentic systems, LLM evaluation, and EU AI Act governance for Romanian and European organizations
 - [Corporate AI Training Romania](https://alexandrudan.com/corporate-ai-training-romania/): TVL Academy programs for teams and executives — prompt engineering, custom AI assistants (ChatGPT, Claude, Gemini), AI Design Sprint, governance
 - [Enterprise AI Agents](https://alexandrudan.com/enterprise-ai-agents/): the AI Agent Production Stack — architecture, contracts, judge models, evaluation, observability, human oversight, and governance for AI agents in production

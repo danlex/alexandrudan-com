@@ -1,7 +1,7 @@
 # SEO Target Queries — `alexandrudan.com`
 
-**Version:** 1.1
-**Last updated:** 2026-08-17
+**Version:** 1.2
+**Last updated:** 2026-09-18
 **Subordinate to:** `master.md` (Master Agreement) and `user-rules.md` (Schedule C).
 
 This file is the **canonical, machine-readable list of search queries** for which `alexandrudan.com` is contractually committed (per Schedule C, USR-001) to rank #1 on Google. The Auditor (`contract-judge`) reads this file when evaluating whether a proposed change strengthens, preserves, or weakens ranking signals for any target query.
@@ -74,14 +74,28 @@ First non-branded tier, added from the GEO Plan (`AlexandruDan_GEO_Plan_v1.md`, 
 34. `AI speaker Romania`
 35. `AI workshop Romania`
 
+## Target queries — Tier 8 (executive 1:1 advisory, non-branded)
+
+Second non-branded tier, added on explicit Principal approval ("Yes — add to contract", 2026-09-18) alongside the launch of `/executive-ai-strategy/`. Like Tier 7, these queries do not contain the name; ranking depends on the dedicated executive-advisory landing page, topical authority, and external citations rather than entity reconciliation alone. They target the C-suite (CEO, CTO, CIO, CAIO) 1:1 AI strategy positioning and also serve the GEO objective — being retrieved and cited by AI answer engines for "who advises executives on AI strategy" intents.
+
+36. `AI strategy advisor for CEO`
+37. `AI advisor for CTO`
+38. `AI advisor for CIO`
+39. `fractional Chief AI Officer`
+40. `interim Chief AI Officer`
+41. `Chief AI Officer advisory`
+42. `executive AI strategy advisor`
+43. `1:1 AI strategy advisory`
+
 ## Reserved for Principal extension
 
 Add new target queries here. Group by tier where possible.
 
-<!-- 36. `<query>` -->
-<!-- 37. `<query>` -->
+<!-- 44. `<query>` -->
+<!-- 45. `<query>` -->
 
 ## Changelog
 
+- **1.2** (2026-09-18) — Added Tier 8 with 8 non-branded executive 1:1 advisory queries (36–43), on explicit Principal approval ("Yes — add to contract", file named), alongside the launch of `/executive-ai-strategy/`. Targets the C-suite (CEO, CTO, CIO, CAIO) 1:1 AI strategy and fractional/interim Chief AI Officer positioning. Reserved-extension placeholders renumbered to 44–45.
 - **1.1** (2026-08-17) — Added Tier 7 with 10 non-branded, Romania-scoped commercial queries (26–35) from the GEO Plan's P0 commercial set, on explicit Principal approval ("yes, extend seo-target-queries"). First non-branded tier; establishes the GEO (AI answer engine) dimension of the ranking objective.
 - **1.0** (2026-05-12) — Initial 25-query target set across 6 tiers, derived from the SEO Audit & Ranking Plan dated 2026-05-12.
