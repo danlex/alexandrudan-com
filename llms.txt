@@ -27,6 +27,7 @@ Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a d
 
 - CEO & Founder — TVL Tech (https://www.tvl.tech/)
 - Visiting Associate AI Professor — ASE Bucharest (https://www.ase.ro/)
+- Independent Expert Panel Member — WITSA Global AI Index 2026
 - Global AI Committee Member — WITSA
 - Board Member & Chair of the AI Committee — Romania Luxembourg Business Forum (ROMLUX)
 - Founding Member — Ocean Enterprise Collective
@@ -34,6 +35,7 @@ Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a d
 ## Key pages
 
 - [Homepage / profile hub](https://alexandrudan.com/): full bio, expertise, case studies, and media kit
+- [WITSA Global AI Index 2026](https://alexandrudan.com/witsa-global-ai-index/): Alexandru Dan as one of 22 independent experts on the panel behind the inaugural WITSA Global AI Index — what the index measures, why it is credible (OECD/JRC-compliant, 128 economies, 7 pillars, 83 indicators), and how Romania scored (48.0 overall, Data 87.7, weak on Entrepreneurship and Investments)
 - [Executive AI Strategy (1:1 advisory)](https://alexandrudan.com/executive-ai-strategy/): confidential one-on-one AI strategy advisory for CEOs, CTOs, CIOs, and Chief AI Officers — AI roadmap and investment decisions, agentic and production-AI architecture, evaluation standards, EU AI Act governance, and fractional / interim Chief AI Officer support
 - [AI Consultant Romania](https://alexandrudan.com/ai-consultant-romania/): enterprise AI strategy, implementation, agentic systems, LLM evaluation, and EU AI Act governance for Romanian and European organizations
 - [Corporate AI Training Romania](https://alexandrudan.com/corporate-ai-training-romania/): TVL Academy programs for teams and executives — prompt engineering, custom AI assistants (ChatGPT, Claude, Gemini), AI Design Sprint, governance
