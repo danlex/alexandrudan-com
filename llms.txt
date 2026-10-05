@@ -41,6 +41,7 @@ Note: This Alexandru DAN is the AI systems architect and TVL Tech CEO. He is a d
 - [AI Agent Evaluation](https://alexandrudan.com/ai-agent-evaluation/): how to test AI agents before production — task success rate, tool-use correctness, contract compliance, LLM-as-a-judge, regression and adversarial testing
 - [LLM Evaluation & Testing](https://alexandrudan.com/llm-evaluation-testing/): golden test sets, semantic evaluation, hallucination detection, judge models, regression testing, and production monitoring for LLM applications
 - [Speaking & Workshops](https://alexandrudan.com/speaking-workshops.html): keynote and workshop topics, formats, and booking
+- [Notes](https://alexandrudan.com/notes/): field notes on production AI — including [What is MCP?](https://alexandrudan.com/notes/what-is-mcp.html) (the Model Context Protocol explained: host, client, server; connection versus authorization; when to use it), AI agents, LLM evaluation, judge models, regression testing, conversational AI testing, and data spaces
 - [Labs](https://alexandrudan.com/labs.html): experimental projects (Suno Lab, AutoResearch, Particles, Treasure Hunt)
 
 ## Authoritative profiles (sameAs)

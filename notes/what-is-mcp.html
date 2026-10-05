@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What is MCP? The Model Context Protocol, explained | Alexandru DAN</title>
+    <meta
+      name="description"
+      content="Field note by Alexandru DAN: what the Model Context Protocol (MCP) is, how host, client, and server work, connection versus authorization, the security limits, and when MCP is worth using."
+    />
+    <meta
+      name="keywords"
+      content="what is MCP, Model Context Protocol, MCP server, MCP client, MCP host, AI tool integration, Alexandru Dan"
+    />
+    <meta name="author" content="Alexandru DAN" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+    <meta property="og:site_name" content="Alexandru DAN" />
+    <meta property="og:title" content="What is MCP? The Model Context Protocol, explained" />
+    <meta property="og:description" content="MCP is an open standard for connecting AI applications to external tools and data. How host, client, and server work, why a connection is not access, and when it's worth using." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://alexandrudan.com/notes/what-is-mcp.html" />
+    <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What is MCP? The Model Context Protocol, explained" />
+    <meta name="twitter:description" content="An open standard for connecting AI applications to external tools and data — host, client, server, and why a connection is not access." />
+    <meta name="twitter:image" content="https://alexandrudan.com/og-image-1200x630.png" />
+
+    <link rel="canonical" href="https://alexandrudan.com/notes/what-is-mcp.html" />
+    <link rel="alternate" hreflang="en" href="https://alexandrudan.com/notes/what-is-mcp.html" />
+    <link rel="alternate" hreflang="x-default" href="https://alexandrudan.com/notes/what-is-mcp.html" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/spacegrotesk-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="../fonts/manrope-latin.woff2" crossorigin />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://alexandrudan.com/notes/what-is-mcp.html#article",
+        "headline": "What is MCP?",
+        "description": "What the Model Context Protocol (MCP) is, how host, client, and server work, connection versus authorization, the security limits, and when MCP is worth using.",
+        "url": "https://alexandrudan.com/notes/what-is-mcp.html",
+        "mainEntityOfPage": "https://alexandrudan.com/notes/what-is-mcp.html",
+        "datePublished": "2026-10-05",
+        "dateModified": "2026-10-05",
+        "inLanguage": "en",
+        "author": { "@id": "https://alexandrudan.com/#person" },
+        "publisher": { "@id": "https://www.tvl.tech/#organization" },
+        "image": "https://alexandrudan.com/og-image-1200x630.png",
+        "articleSection": "AI Engineering",
+        "keywords": "Model Context Protocol, MCP, MCP server, AI tool integration",
+        "isPartOf": { "@id": "https://alexandrudan.com/notes/#blog" }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://alexandrudan.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Notes", "item": "https://alexandrudan.com/notes/" },
+          { "@type": "ListItem", "position": 3, "name": "What is MCP?", "item": "https://alexandrudan.com/notes/what-is-mcp.html" }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is MCP only for Claude?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. MCP is an open standard, not an Anthropic-only feature. It is supported across many AI applications and tools, including Claude, ChatGPT, and editors like VS Code and Cursor, so a server you build once can be used by any MCP-capable client."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does connecting an MCP server give it access to everything?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The connection and the authorization are separate. Remote servers typically use OAuth or API tokens, a server must reject tokens that were not issued for it, and the guidance is to require user consent and grant the least privilege that works. Treat a new server as untrusted until you have vetted it."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="inner-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html#top" aria-label="Back to homepage">
+          <span class="brand-mark">
+            <img src="../favicon.svg" alt="TVL Tech mark" />
+          </span>
+          <span class="brand-copy">
+            <strong>Alexandru DAN</strong>
+            <small>Notes</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">All notes</a>
+          <a href="../ai-agent-evaluation/">Agent Evaluation</a>
+          <a href="../enterprise-ai-agents/">Enterprise Agents</a>
+          <a class="button button-ghost" href="../index.html#top">Main Site</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero reveal" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field Note · AI Engineering · October 2026</p>
+          <h1>What is MCP?</h1>
+          <p class="lead">
+            MCP, the Model Context Protocol, is an open standard for connecting AI applications to external tools and data. It gives a model a consistent way to reach systems it would otherwise only hear about secondhand, such as a database, a ticketing system, or a file store, and to act on them. The official analogy is a USB-C port for AI: one standard plug instead of a custom integration for every tool.
+          </p>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <p class="project-kicker">The note</p>
+            <p>
+              MCP uses a simple client-server shape. The <strong>host</strong> is the AI application you are using, such as Claude Desktop or Claude Code. For each external system it wants to reach, the host starts one <strong>client</strong>, and each client holds a dedicated connection to one <strong>server</strong>. A server is just a program that exposes capability over the protocol; it can run locally on your machine or remotely on a vendor's platform. What a server offers comes in three kinds: <em>tools</em> (actions the model can call, like "create ticket" or "run query"), <em>resources</em> (data it can read, like a file or a record), and <em>prompts</em> (ready-made templates). The model discovers what is available, then calls it, the same way regardless of what the tool actually does (<a href="https://modelcontextprotocol.io/introduction">modelcontextprotocol.io</a>).
+            </p>
+            <p>
+              A hypothetical logistics company wants its support assistant to answer "where is my shipment?" Without MCP, someone copies tracking data into the chat by hand. With an MCP server wrapping the carrier's tracking API, the assistant calls a tracking tool directly, reads the result, and replies, inside whatever limits the server allows. The company builds the server once, and any MCP-capable client can use it.
+            </p>
+            <p>
+              Two points are easy to get wrong, and both are about trust. A connection is not access. MCP defines how a client and server talk, but authorization is handled separately: remote servers typically use OAuth or API tokens, and the standard is explicit that a server must reject tokens that were not issued for it and must verify every request rather than trust that a caller is connected (<a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices">MCP security guidance</a>). Tools also take real actions, so the usual risks apply. A server can return content that tries to steer the model into misusing a tool, the tool-use version of prompt injection, and an over-broad set of permissions widens the blast radius if anything goes wrong, which is why the standard guidance is to require user consent before running a local server, grant the least privilege that works, and treat each server as untrusted until you have reason not to.
+            </p>
+            <p>
+              MCP earns its place when you keep pasting the same external data into a chat, or when an assistant needs to act in a system rather than just talk about it. It is now supported across a range of clients and servers, including Claude, ChatGPT, and editors like VS Code and Cursor, so a server you build is reusable well beyond one app. Where it fits in a larger system is one layer of how <a href="../enterprise-ai-agents/">AI agents reach production</a>, and it pairs with the discipline of <a href="../ai-agent-evaluation/">evaluating what those agents do</a>. For a plainer starting point, see <a href="what-is-an-ai-agent.html">what an AI agent is</a>.
+            </p>
+          </article>
+          <article class="project-card">
+            <h3>In one line</h3>
+            <ul class="workshop-list">
+              <li><strong>Host:</strong> the AI application (e.g. Claude Code).</li>
+              <li><strong>Client:</strong> one connection, managed by the host, to one server.</li>
+              <li><strong>Server:</strong> exposes tools, resources, and prompts; runs locally or remotely.</li>
+            </ul>
+            <h3>Related</h3>
+            <ul class="workshop-list">
+              <li><a href="../enterprise-ai-agents/">Enterprise AI agents: the Production Stack</a></li>
+              <li><a href="../ai-agent-evaluation/">AI agent evaluation</a></li>
+              <li><a href="../ai-consultant-romania/">AI consultant (Romania)</a></li>
+            </ul>
+            <p class="workshop-note">For help deciding where MCP fits in your stack, email <a href="mailto:alex@tvl.tech">alex@tvl.tech</a>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions.</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <h3>Is MCP only for Claude?</h3>
+            <p>
+              No. MCP is an open standard, not an Anthropic-only feature. It is supported across many AI applications and tools, including Claude, ChatGPT, and editors like VS Code and Cursor, so a server you build once can be used by any MCP-capable client.
+            </p>
+            <h3>Does connecting an MCP server give it access to everything?</h3>
+            <p>
+              No. The connection and the authorization are separate. Remote servers typically use OAuth or API tokens, a server must reject tokens that were not issued for it, and the guidance is to require user consent and grant the least privilege that works. Treat a new server as untrusted until you have vetted it.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <div class="section-head">
+          <p class="eyebrow">Sources</p>
+          <h2>Primary references.</h2>
+        </div>
+        <div class="project-showcase">
+          <article class="project-card project-card-hero">
+            <ul class="workshop-list">
+              <li><a href="https://modelcontextprotocol.io/introduction">Model Context Protocol: Introduction</a></li>
+              <li><a href="https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture">Model Context Protocol: Architecture overview</a></li>
+              <li><a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices">Model Context Protocol: Security best practices</a></li>
+              <li><a href="https://code.claude.com/docs/en/mcp">Claude Docs: MCP</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="../index.html#top">Home</a> · <a href="index.html">Notes</a></p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="https://chat.tvl.tech/tvl-chat.js" data-tvl-chat
+            data-endpoint="https://chat.tvl.tech" data-tenant="alexandrudan"
+            data-accent="#FF4931" data-title="Alexandru DAN" data-lang="en" defer></script>
+  </body>
+</html>
