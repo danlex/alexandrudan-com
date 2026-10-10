@@ -921,6 +921,17 @@ h1 {
   color: var(--ink-soft);
 }
 
+.impact-recognition {
+  margin: 0 0 20px;
+  font-weight: 600;
+  color: var(--red-dark);
+}
+
+.impact-recognition a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .impact-card,
 .ethics-card,
 .timeline-item,
