@@ -26,7 +26,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:updated_time" content="2026-08-17T00:00:00+02:00" />
+    <meta property="og:updated_time" content="2026-10-11T00:00:00+02:00" />
     <meta property="og:url" content="https://alexandrudan.com/" />
     <meta property="og:image" content="https://alexandrudan.com/og-image-1200x630.png" />
     <meta property="og:image:width" content="1200" />
@@ -129,6 +129,16 @@
           "@type": "EducationalOrganization",
           "name": "University of Bucharest"
         },
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Academic appointment",
+          "name": "Visiting Associate AI Professor",
+          "recognizedBy": {
+            "@type": "EducationalOrganization",
+            "name": "Bucharest University of Economic Studies (ASE Bucharest)",
+            "url": "https://www.ase.ro/"
+          }
+        },
         "description": "Applied AI systems architect, lecturer, and technology leader focused on production AI delivery, evaluation rigor, and governance by design.",
         "knowsAbout": [
           "Artificial Intelligence",
@@ -147,6 +157,10 @@
           "Team Leadership"
         ],
         "memberOf": [
+          {
+            "@type": "Organization",
+            "name": "WITSA Global AI Index 2026 Expert Panel"
+          },
           {
             "@type": "Organization",
             "name": "WITSA AI Committee"
@@ -180,6 +194,9 @@
           "https://republica.ro/autor/alexandrudan_2",
           "https://www.zf.ro/zf-24/zf-live-alexandru-dan-22443619",
           "https://icmarktech.com/icmarktech-2026-announces-alexandru-dan-as-keynote-speaker/",
+          "https://icmarktech.com/keynote-speakers/alexandru-dan/",
+          "https://www.datadiggers-mr.com/blog/ai-as-a-living-ecosystem-in-conversation-with-alexandru-dan",
+          "https://www.atic.org.ro/en/articles/romania-has-a-solid-foundation-for-ai-development-now-we-need-to-turn-it-into-results/",
           "https://www.wall-street.ro/articol/Companii/311775/alexandru-dan-expert-ai-companiile-care-nu-investesc-in-ai-vor-supravietui-doar-cu-noroc.html"
         ]
       }
@@ -240,7 +257,11 @@
           "@type": "ImageObject",
           "url": "https://alexandrudan.com/og-image-1200x630.png"
         },
-        "dateModified": "2026-09-18",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": ["#about h2", "#about .about-grid"]
+        },
+        "dateModified": "2026-10-11",
         "inLanguage": "en"
       }
     </script>
@@ -446,7 +467,7 @@
             <li>Conversational AI Testing</li>
             <li>Data Spaces and AI</li>
           </ul>
-          <p class="trust-copy">Trusted by teams in:</p>
+          <p class="trust-copy">Experience at:</p>
           <ul class="trust-row" aria-label="Organizations">
             <li>eMAG</li>
             <li>European Commission</li>
@@ -480,7 +501,7 @@
           <div class="aside-metrics" aria-label="Key metrics">
             <article class="aside-metric">
               <p class="aside-metric-value">15+</p>
-              <p class="aside-metric-label">Years in AI delivery</p>
+              <p class="aside-metric-label">Years in AI · 25+ in tech</p>
             </article>
             <article class="aside-metric">
               <p class="aside-metric-value">70+</p>
@@ -530,9 +551,10 @@
           <p class="eyebrow">Impact</p>
           <h2>Numbers that reflect delivery, not theory.</h2>
         </div>
+        <p class="impact-recognition">Selected as 1 of 22 independent experts for the <a href="witsa-global-ai-index/">WITSA Global AI Index 2026</a>, representing Romania across 128 measured economies.</p>
         <div class="impact-grid">
           <article class="impact-card">
-            <p class="impact-value">47+</p>
+            <p class="impact-value">40+</p>
             <p class="impact-label">Technical teams built and led</p>
           </article>
           <article class="impact-card">
@@ -676,6 +698,9 @@
             <p>
               TVL Tech builds software products with enterprise-grade delivery quality, combining modern architecture with practical execution across AI and custom platforms.
             </p>
+            <p>
+              In 2026, TVL Tech Luxembourg launched at Nexus Luxembourg 2026, where founder and CEO Alexandru DAN met Luxembourg's Minister of the Economy, Lex Delles.
+            </p>
             <div class="tvl-proof" aria-label="TVL Tech delivery characteristics">
               <span>Enterprise standards</span>
               <span>Startup speed</span>
@@ -688,19 +713,19 @@
           </article>
           <aside class="tvl-services">
             <p class="project-kicker">Core Expertise</p>
-            <h3>Service lines reflected on tvl.tech</h3>
+            <h3>Where I focus</h3>
             <ul class="tvl-service-list">
               <li>
-                <h4>Artificial Intelligence</h4>
-                <p>AI systems and automation workflows designed for business outcomes, reliability, and scale.</p>
+                <h4>Sovereign AI &amp; Data Spaces</h4>
+                <p>AI and federated data-space architecture that keeps data, compliance, and control inside the organization and its jurisdiction.</p>
               </li>
               <li>
-                <h4>Blockchain Infrastructure</h4>
-                <p>From concept to deployment, with implementation guidance for secure and scalable ecosystems.</p>
+                <h4>Production AI &amp; Evaluation</h4>
+                <p>LLMs, agentic workflows, and conversational systems taken to production — with the evaluation and testing rigor to keep them reliable under real load.</p>
               </li>
               <li>
-                <h4>Custom Web Development</h4>
-                <p>High-performance digital products optimized for usability, maintainability, and long-term growth.</p>
+                <h4>AI Governance &amp; Policy</h4>
+                <p>EU AI Act readiness and governance by design, informed by policy work with WITSA and the Romania–Luxembourg business community.</p>
               </li>
             </ul>
             <div class="tvl-engagement">
@@ -748,14 +773,29 @@
             <p>Building an AI recruitment platform to improve talent-role matching, hiring operations, and workforce intelligence.</p>
           </article>
           <article class="timeline-item">
+            <p class="timeline-period">2026</p>
+            <h3>Independent Expert Panel Member · WITSA Global AI Index 2026</h3>
+            <p>One of 22 independent experts who reviewed and signed off the methodology behind the inaugural WITSA Global AI Index, representing Romania across 128 measured economies. <a href="witsa-global-ai-index/">Read the breakdown</a>.</p>
+          </article>
+          <article class="timeline-item">
             <p class="timeline-period">Jan 2025 - Present</p>
             <h3>Global AI Committee Member · WITSA</h3>
             <p>Contributing to global ICT and AI policy dialogue through the World Information Technology and Services Alliance.</p>
           </article>
           <article class="timeline-item">
+            <p class="timeline-period">Present</p>
+            <h3>Coordinator, AI Working Group for International Affairs · ATIC</h3>
+            <p>Leading the international work of ATIC's Artificial Intelligence Working Group as Romania's sole WITSA member, and serving as nominated expert to the WITSA AI Committee.</p>
+          </article>
+          <article class="timeline-item">
             <p class="timeline-period">Mar 2025 - Present</p>
             <h3>Board Member, Chair of the AI Committee · Romania Luxembourg Business Forum (ROMLUX) asbl</h3>
             <p>Supporting bilateral economic and technology collaboration between Luxembourg and Romania, with a focus on AI strategy and innovation.</p>
+          </article>
+          <article class="timeline-item">
+            <p class="timeline-period">Present</p>
+            <h3>Startup Mentor · NATO DIANA, MassChallenge &amp; Luxembourg Startup Association</h3>
+            <p>Mentoring early-stage and dual-use startups on applied AI, product architecture, and go-to-market across Europe.</p>
           </article>
           <article class="timeline-item">
             <p class="timeline-period">Jan 2024 - Present</p>
@@ -994,7 +1034,7 @@
           <article class="project-card">
             <h3>Why it matters</h3>
             <p>
-              This project strengthens your portfolio in enterprise AI infrastructure, showing your involvement in open, collaborative, and compliance-oriented innovation.
+              It keeps my work close to the governance and interoperability problems enterprises hit when they move data and AI into production — inside the collective defining an open, compliance-first standard for that infrastructure.
             </p>
           </article>
         </div>
@@ -1088,7 +1128,7 @@
 
       <section class="section reveal" id="press">
         <div class="section-head">
-          <p class="eyebrow">Press Releases</p>
+          <p class="eyebrow">Press &amp; Recognition</p>
           <h2>Official announcements, interviews, and institutional mentions.</h2>
         </div>
         <div class="press-controls" role="toolbar" aria-label="Filter press items">
@@ -1098,6 +1138,31 @@
           <button class="press-filter" type="button" data-filter="editorial" aria-pressed="false">Editorial</button>
         </div>
         <div class="press-grid">
+          <article class="press-card" data-press-type="institutional">
+            <img
+              class="press-thumb"
+              src="alexandru-dan-portrait.jpg"
+              alt="Alexandru DAN, independent expert panel member for the WITSA Global AI Index 2026"
+              loading="lazy"
+            />
+            <p class="press-source">WITSA Global AI Index 2026</p>
+            <h3>Independent expert panel member for the inaugural WITSA Global AI Index</h3>
+            <p>One of 22 independent experts who reviewed and signed off the methodology behind the first WITSA Global AI Index, a diagnosis of AI ecosystem development across 128 economies, representing Romania.</p>
+            <a href="witsa-global-ai-index/">Read the breakdown</a>
+            <a href="https://www.atic.org.ro/wp-content/uploads/2026/09/WITSA_GAII_2026_Flagship_Report.pdf" target="_blank" rel="noopener">Download the report (PDF)</a>
+          </article>
+          <article class="press-card" data-press-type="institutional">
+            <img
+              class="press-thumb"
+              src="alexandru-dan-portrait.jpg"
+              alt="Alexandru DAN, coordinator of ATIC's AI Working Group for International Affairs"
+              loading="lazy"
+            />
+            <p class="press-source">ATIC</p>
+            <h3>Romania has a solid foundation for AI development — now we need to turn it into results</h3>
+            <p>ATIC feature on Romania's WITSA Global AI Index results, where Alexandru DAN — coordinator of ATIC's AI Working Group for International Affairs and nominated expert to the WITSA AI Committee — contributed to the expert panel.</p>
+            <a href="https://www.atic.org.ro/en/articles/romania-has-a-solid-foundation-for-ai-development-now-we-need-to-turn-it-into-results/" target="_blank" rel="noopener">Read on ATIC</a>
+          </article>
           <article class="press-card" data-press-type="institutional">
             <img
               class="press-thumb"
@@ -1121,6 +1186,18 @@
             <h3>ZF Live: TVL Tech grew 50% to €1.5M and plans an AI lab in Romania</h3>
             <p>In a ZF Live interview, Alexandru DAN shared that TVL Tech grew 50% to 1.5 million euro and outlined plans to build an AI lab in Romania.</p>
             <a href="https://www.zfcorporate.ro/business-hi-tech/zf-live-alexandru-dan-ceo-tvl-tech-companie-cursuri-solutii-23161662" target="_blank" rel="noreferrer">Watch interview</a>
+          </article>
+          <article class="press-card" data-press-type="interview">
+            <img
+              class="press-thumb"
+              src="alexandru-dan-portrait.jpg"
+              alt="Alexandru DAN on AI in education, in the Școala 9 interview"
+              loading="lazy"
+            />
+            <p class="press-source">Școala 9</p>
+            <h3>„În educație, AI-ul va fi prezent cum este electricitatea"</h3>
+            <p>Interview on how AI is reshaping education and everyday life, and how students and teachers should adapt to it.</p>
+            <a href="https://scoala9.ro/in-educatie-dar-si-in-vietile-noastre-in-general-ai-ul-va-fi-prezent-cum-este-electricitatea/2284" target="_blank" rel="noopener">Read the interview</a>
           </article>
           <article class="press-card" data-press-type="interview">
             <img
@@ -1385,7 +1462,8 @@
         <div class="principles-grid">
           <article class="principle-card">
             <blockquote>
-              <p>AI will not replace your job, but someone who knows AI might.</p>
+              <p>&ldquo;AI will not replace your job, but someone who knows AI might.&rdquo;</p>
+              <cite>A widely quoted maxim on the AI transition</cite>
             </blockquote>
           </article>
           <article class="principle-card">
@@ -1546,7 +1624,7 @@
     </main>
 
     <footer class="site-footer">
-      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="executive-ai-strategy/">Executive AI Strategy</a> · <a href="ai-consultant-romania/">AI Consulting</a> · <a href="corporate-ai-training-romania/">AI Training</a> · <a href="enterprise-ai-agents/">AI Agents</a> · <a href="ai-agent-evaluation/">Agent Evaluation</a> · <a href="llm-evaluation-testing/">LLM Testing</a> · <a href="#academy">Academy</a> · <a href="#ventures">Projects</a> · <a href="notes/">Notes</a> · <a href="labs.html">Labs</a> · <a href="speaking-workshops.html">Speaking</a></p>
+      <p>&copy; <span id="year"></span> Alexandru DAN. Applied AI Systems Architect, Speaker, CEO at TVL Tech. <a href="executive-ai-strategy/">Executive AI Strategy</a> · <a href="ai-consultant-romania/">AI Consulting</a> · <a href="corporate-ai-training-romania/">AI Training</a> · <a href="enterprise-ai-agents/">AI Agents</a> · <a href="ai-agent-evaluation/">Agent Evaluation</a> · <a href="llm-evaluation-testing/">LLM Testing</a> · <a href="witsa-global-ai-index/">WITSA AI Index</a> · <a href="#academy">Academy</a> · <a href="#ventures">Projects</a> · <a href="notes/">Notes</a> · <a href="labs.html">Labs</a> · <a href="speaking-workshops.html">Speaking</a></p>
     </footer>
 
     <script src="script.js"></script>
