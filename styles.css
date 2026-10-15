@@ -1121,6 +1121,16 @@ h1 {
   text-decoration-thickness: 2px;
 }
 
+/* Keep real buttons readable when used inside .project-actions
+   (the rule above would otherwise paint button-solid text red on red). */
+.project-actions .button-solid {
+  color: #fff;
+}
+
+.project-actions .button-ghost {
+  color: var(--ink);
+}
+
 .suno-examples {
   margin-top: 12px;
   display: grid;
